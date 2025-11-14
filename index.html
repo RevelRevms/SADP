@@ -50,13 +50,16 @@
       object-fit: cover;
       z-index: 2;
     }
-
-    /* En móvil: alineado a la izquierda */
+/* ===== RESPONSIVE - MOBILE INTRO ALIGNMENT ===== */
 @media (max-width: 768px) {
   #intro-video {
-    left: 0;                    /* Alineado a la izquierda */
-    transform: none;            /* Quita el centrado */
+    object-position: -250px center;
   }
+  
+  /* Opcional: si quieres un efecto más pronunciado */
+  /* #intro-video {
+    object-position: 20% center;
+  } */
 }
 
     .fade-out { 
@@ -803,5 +806,4 @@
     observer.observe(footer);
   </script>
 </body>
-
 </html>
