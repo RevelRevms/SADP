@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Galería - San Antonio de Padua</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../styles/main.css">
+  <style>
+    .gallery-controls {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 0.8rem 1.5rem;
+      background: var(--white);
+      border: 2px solid var(--accent-color);
+      color: var(--primary-color);
+      border-radius: 25px;
+      cursor: pointer;
+      transition: var(--transition);
+      font-weight: 500;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--accent-color);
+      color: var(--white);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .gallery-item {
+      position: relative;
+      background: var(--white);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      cursor: pointer;
+      aspect-ratio: 4/3;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(107, 68, 35, 0.2);
+    }
+
+    .gallery-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .gallery-item:hover .gallery-image {
+      transform: scale(1.05);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.8));
+      color: var(--white);
+      padding: 2rem 1rem 1rem;
+      transform: translateY(100%);
+      transition: var(--transition);
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      transform: translateY(0);
+    }
+
+    .gallery-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .gallery-date {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    .video-gallery {
+      margin: 3rem 0;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .video-item {
+      background: var(--white);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .video-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .video-placeholder {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(135deg, #F5F1E8, #E8DCC8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--secondary-color);
+      font-size: 3rem;
+    }
+
+    .video-info {
+      padding: 1.5rem;
+    }
+
+    .video-title {
+      font-size: 1.1rem;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .video-duration {
+      color: var(--secondary-color);
+      font-size: 0.9rem;
+    }
+
+    /* Modal para imagen ampliada */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      animation: fadeIn 0.3s ease;
+    }
+
+    .modal-content {
+      position: relative;
+      margin: auto;
+      display: block;
+      width: 90%;
+      max-width: 1200px;
+      max-height: 90vh;
+      top: 50%;
+      transform: translateY(-50%);
+      border-radius: 10px;
+    }
+
+    .modal-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0,0,0,0.7);
+      color: var(--white);
+      padding: 1.5rem;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 15px;
+      right: 25px;
+      color: var(--white);
+      font-size: 2rem;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 1001;
+      transition: var(--transition);
+    }
+
+    .close-modal:hover {
+      color: var(--accent-color);
+    }
+
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.2);
+      color: var(--white);
+      border: none;
+      padding: 1rem;
+      cursor: pointer;
+      font-size: 1.5rem;
+      border-radius: 50%;
+      transition: var(--transition);
+      z-index: 1001;
+    }
+
+    .nav-btn:hover {
+      background: rgba(255,255,255,0.3);
+    }
+
+    .prev-btn {
+      left: 25px;
+    }
+
+    .next-btn {
+      right: 25px;
+    }
+
+    .empty-gallery {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: rgba(201, 184, 154, 0.1);
+      border-radius: var(--border-radius);
+      margin: 2rem 0;
+    }
+
+    .empty-icon {
+      font-size: 4rem;
+      color: var(--accent-color);
+      margin-bottom: 1rem;
+    }
+
+    .upload-section {
+      background: linear-gradient(135deg, #F5F1E8, #E8DCC8);
+      padding: 2rem;
+      border-radius: var(--border-radius);
+      margin: 2rem 0;
+      text-align: center;
+    }
+
+    .upload-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent-color);
+      color: var(--primary-color);
+      padding: 1rem 2rem;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+      margin-top: 1rem;
+    }
+
+    .upload-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(107, 68, 35, 0.3);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1rem;
+      }
+
+      .gallery-controls {
+        gap: 0.5rem;
+      }
+
+      .filter-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+      }
+
+      .nav-btn {
+        padding: 0.8rem;
+        font-size: 1.2rem;
+      }
+
+      .prev-btn {
+        left: 10px;
+      }
+
+      .next-btn {
+        right: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main id="main" class="show">
+    <header>
+      <div class="header-content">
+        <a href="../index.html" class="logo">
+          <i class="fas fa-church"></i> Parroquia San Antonio de Padua
+        </a>
+        
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav class="nav-menu" id="navMenu">
+          <ul class="nav-list">
+            <li><a href="../index.html" class="nav-link"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="quienes-somos.html" class="nav-link"><i class="fas fa-users"></i> Quiénes Somos</a></li>
+            <li><a href="sacramentos.html" class="nav-link"><i class="fas fa-cross"></i> Sacramentos</a></li>
+            <li><a href="horarios.html" class="nav-link"><i class="fas fa-clock"></i> Horarios</a></li>
+            <li><a href="consejo-pastoral.html" class="nav-link"><i class="fas fa-hands-praying"></i> Consejo Pastoral</a></li>
+            <li><a href="eventos.html" class="nav-link"><i class="fas fa-calendar-alt"></i> Eventos</a></li>
+            <li><a href="noticias.html" class="nav-link"><i class="fas fa-newspaper"></i> Noticias</a></li>
+            <li><a href="galeria.html" class="nav-link active"><i class="fas fa-images"></i> Galería</a></li>
+            <li><a href="contacto.html" class="nav-link"><i class="fas fa-envelope"></i> Contacto</a></li>
+            <li><a href="donaciones.html" class="nav-link"><i class="fas fa-hand-holding-heart"></i> Donaciones</a></li>
+            <li><a href="oraciones.html" class="nav-link"><i class="fas fa-pray"></i> Oraciones</a></li>
+            <li><a href="enlaces.html" class="nav-link"><i class="fas fa-link"></i> Enlaces</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div class="content-wrapper">
+      <div class="page-header">
+        <h1>Galería</h1>
+        <p>Momentos especiales y celebraciones de nuestra comunidad parroquial</p>
+      </div>
+
+      <!-- Controles de Filtro -->
+      <div class="gallery-controls">
+        <button class="filter-btn active" data-filter="all">Todas</button>
+        <button class="filter-btn" data-filter="misas">Misas</button>
+        <button class="filter-btn" data-filter="bautizos">Bautizos</button>
+        <button class="filter-btn" data-filter="matrimonios">Matrimonios</button>
+        <button class="filter-btn" data-filter="eventos">Eventos</button>
+        <button class="filter-btn" data-filter="comunidad">Comunidad</button>
+        <button class="filter-btn" data-filter="festividades">Festividades</button>
+      </div>
+
+      <!-- Galería de Fotos -->
+      <div class="content-section">
+        <h2><i class="fas fa-camera"></i> Fotos</h2>
+        <div class="gallery-grid" id="photoGallery">
+          <!-- Item 1 -->
+          <div class="gallery-item" data-category="misas" data-index="0">
+            <div class="gallery-image-placeholder" style="background: linear-gradient(135deg, #C9B89A, #D4C4A8); display: flex; align-items: center; justify-content: center; height: 100%; color: var(--white); font-size: 3rem;">
+              <i class="fas fa-church"></i>
+            </div>
+            <div class="gallery-overlay">
+              <div class="gallery-title">Misa Dominical</div>
+              <div class="gallery-date">15 Enero, 2024</div>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="gallery-item" data-category="bautizos" data-index="1">
+            <div class="gallery-image-placeholder" style="background: linear-gradient(135deg, #87CEEB, #4682B4); display: flex; align-items: center; justify-content: center; height: 100%; color: var(--white); font-size: 3rem;">
+              <i class="fas fa-water"></i>
+            </div>
+            <div class="gallery-overlay">
+              <div class="gallery-title">Bautizo de María González</div>
+              <div class="gallery-date">20 Enero, 2024</div>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="gallery-item" data-category="matrimonios" data-index="2">
+            <div class="gallery-image-placeholder" style="background: linear-gradient(135deg, #FFB6C1, #FF69B4); display: flex; align-items: center; justify-content: center; height: 100%; color: var(--white); font-size: 3rem;">
+              <i class="fas fa-ring"></i>
+            </div>
+            <div class="gallery-overlay">
+              <div class="gallery-title">Matrimonio Pérez-López</div>
+              <div class="gallery-date">5 Febrero, 2024</div>
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="gallery-item" data-category="eventos" data-index="3">
+            <div class="gallery-image-placeholder" style="background: linear-gradient(135deg, #98FB98, #32CD32); display: flex; align-items: center; justify-content: center; height: 100%; color: var(--white); font-size: 3rem;">
+              <i class="fas fa-users"></i>
+            </div>
+            <div class="gallery-overlay">
+              <div class="gallery-title">Retiro Juvenil</div>
+              <div class="gallery-date">12 Febrero, 2024</div>
+            </div>
+          </div>
+
+          <!-- Item 5 -->
+          <div class="gallery-item" data-category="festividades" data-index="4">
+            <div class="gallery-image-placeholder" style="background: linear-gradient(135deg, #FFD700, #FFA500); display: flex; align-items: center; justify-content: center; height: 100%; color: var(--white); font-size: 3rem;">
+              <i class="fas fa-star"></i>
+            </div>
+            <div class="gallery-overlay">
+              <div class="gallery-title">Navidad 2023</div>
+              <div class="gallery-date">24 Diciembre, 2023</div>
+            </div>
+          </div>
+
+          <!-- Item 6 -->
+          <div class="gallery-item" data-category="comunidad" data-index="5">
+            <div class="gallery-image-placeholder" style="background: linear-gradient(135deg, #DDA0DD, #BA55D3); display: flex; align-items: center; justify-content: center; height: 100%; color: var(--white); font-size: 3rem;">
+              <i class="fas fa-hands-helping"></i>
+            </div>
+            <div class="gallery-overlay">
+              <div class="gallery-title">Ayuda Comunitaria</div>
+              <div class="gallery-date">8 Marzo, 2024</div>
+            </div>
+          </div>
+
+          <!-- Item 7 -->
+          <div class="gallery-item" data-category="misas" data-index="6">
+            <div class="gallery-image-placeholder" style="background: linear-gradient(135deg, #F0E68C, #DAA520); display: flex; align-items: center; justify-content: center; height: 100%; color: var(--white); font-size: 3rem;">
+              <i class="fas fa-cross"></i>
+            </div>
+            <div class="gallery-overlay">
+              <div class="gallery-title">Semana Santa</div>
+              <div class="gallery-date">2 Abril, 2024</div>
+            </div>
+          </div>
+
+          <!-- Item 8 -->
+          <div class="gallery-item" data-category="eventos" data-index="7">
+            <div class="gallery-image-placeholder" style="background: linear-gradient(135deg, #87CEFA, #1E90FF); display: flex; align-items: center; justify-content: center; height: 100%; color: var(--white); font-size: 3rem;">
+              <i class="fas fa-music"></i>
+            </div>
+            <div class="gallery-overlay">
+              <div class="gallery-title">Concierto Coral</div>
+              <div class="gallery-date">18 Marzo, 2024</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="empty-gallery" id="emptyGallery" style="display: none;">
+          <div class="empty-icon">
+            <i class="fas fa-images"></i>
+          </div>
+          <h3>No hay fotos en esta categoría</h3>
+          <p>Prueba seleccionando otra categoría o vuelve más tarde.</p>
+        </div>
+      </div>
+
+      <!-- Galería de Videos -->
+      <div class="video-gallery">
+        <h2><i class="fas fa-video"></i> Videos</h2>
+        <div class="video-grid">
+          <!-- Video 1 -->
+          <div class="video-item">
+            <div class="video-placeholder">
+              <i class="fas fa-play-circle"></i>
+            </div>
+            <div class="video-info">
+              <div class="video-title">Misa Dominical Completa</div>
+              <div class="video-duration">1:15:30 • 15 Enero, 2024</div>
+            </div>
+          </div>
+
+          <!-- Video 2 -->
+          <div class="video-item">
+            <div class="video-placeholder">
+              <i class="fas fa-play-circle"></i>
+            </div>
+            <div class="video-info">
+              <div class="video-title">Boda de Carlos y María</div>
+              <div class="video-duration">45:20 • 5 Febrero, 2024</div>
+            </div>
+          </div>
+
+          <!-- Video 3 -->
+          <div class="video-item">
+            <div class="video-placeholder">
+              <i class="fas fa-play-circle"></i>
+            </div>
+            <div class="video-info">
+              <div class="video-title">Concierto de Navidad</div>
+              <div class="video-duration">1:30:15 • 24 Diciembre, 2023</div>
+            </div>
+          </div>
+
+          <!-- Video 4 -->
+          <div class="video-item">
+            <div class="video-placeholder">
+              <i class="fas fa-play-circle"></i>
+            </div>
+            <div class="video-info">
+              <div class="video-title">Charla: Fe en la Familia</div>
+              <div class="video-duration">58:45 • 10 Marzo, 2024</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sección para Compartir Fotos -->
+      <div class="upload-section">
+        <h2><i class="fas fa-share-alt"></i> Comparte tus Fotos</h2>
+        <p>¿Tienes fotos de eventos parroquiales que quieras compartir con la comunidad?</p>
+        <a href="contacto.html" class="upload-btn">
+          <i class="fas fa-cloud-upload-alt"></i>
+          Enviar Fotos
+        </a>
+        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--secondary-color);">
+          Envíanos tus fotos por correo electrónico o contáctanos para coordinarlo
+        </p>
+      </div>
+
+      <!-- Información de Galería -->
+      <div class="content-section">
+        <h2>Información de la Galería</h2>
+        <div class="grid-2">
+          <div class="card">
+            <h3><i class="fas fa-camera"></i> Política de Fotos</h3>
+            <p>Respetamos la privacidad de nuestra comunidad. Si prefieres que removamos alguna foto en la que apareces, contáctanos.</p>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-download"></i> Descarga de Fotos</h3>
+            <p>Puedes descargar las fotos para uso personal. Para uso comercial o publicación, solicita autorización.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal para imagen ampliada -->
+    <div id="imageModal" class="modal">
+      <span class="close-modal">&times;</span>
+      <button class="nav-btn prev-btn" id="prevBtn">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="nav-btn next-btn" id="nextBtn">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+      <div class="modal-content">
+        <div id="modalImage" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #F5F1E8, #E8DCC8);">
+          <i class="fas fa-image" style="font-size: 4rem; color: var(--accent-color);"></i>
+        </div>
+        <div class="modal-info">
+          <h3 id="modalTitle">Título de la imagen</h3>
+          <p id="modalDate">Fecha de la imagen</p>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="social-links">
+        <a href="https://www.facebook.com/share/1AquunAVcx/" target="_blank" class="social-icon" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/parro.sanantoniodepadua?igsh=MXRneng4Nzg2MGgzNA==" target="_blank" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://share.google/6GaPNxTyI02Faqd63" target="_blank" class="social-icon" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="https://youtube.com/@sanantoniodepaduasaac?si=1y1MmxNRH4CD67kN" target="_blank" class="social-icon" title="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.tiktok.com/@sanantoniodepaduasaac?_r=1&_t=ZM-91NUqaGFZAB" target="_blank" class="social-icon" title="TikTok"><i class="fab fa-tiktok"></i></a>
+        <a href="#" class="social-icon" title="Email"><i class="fas fa-envelope"></i></a>
+      </div>
+
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Información</h3>
+          <a href="horarios.html">Horarios</a>
+          <a href="eventos.html">Eventos</a>
+          <a href="noticias.html">Noticias</a>
+          <a href="galeria.html">Galería</a>
+        </div>
+        <div class="footer-section">
+          <h3>Comunidad</h3>
+          <a href="consejo-pastoral.html">Consejo Pastoral</a>
+          <a href="donaciones.html">Donaciones</a>
+          <a href="contacto.html">Contacto</a>
+        </div>
+        <div class="footer-section">
+          <h3>Enlaces Útiles</h3>
+          <a href="https://www.conferenciaepiscopal.org.gt/" target="_blank">Conferencia Episcopal</a>
+          <a href="https://www.vatican.va/content/vatican/es.html" target="_blank">El Vaticano</a>
+          <a href="oraciones.html">Oraciones</a>
+          <a href="enlaces.html">Enlaces</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2024 San Antonio de Padua. Todos los derechos reservados.</p>
+        <p>Hecho con <span style="color: #d4a574;">❤</span> para nuestra comunidad</p>
+      </div>
+    </footer>
+  </main>
+
+  <script src="../js/main.js"></script>
+  <script>
+    // Filtrado de galería
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const emptyGallery = document.getElementById('emptyGallery');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remover clase active de todos los botones
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        // Agregar clase active al botón clickeado
+        button.classList.add('active');
+        
+        const filter = button.getAttribute('data-filter');
+        filterGallery(filter);
+      });
+    });
+
+    function filterGallery(filter) {
+      let visibleItems = 0;
+      
+      galleryItems.forEach(item => {
+        if (filter === 'all' || item.getAttribute('data-category') === filter) {
+          item.style.display = 'block';
+          visibleItems++;
+        } else {
+          item.style.display = 'none';
+        }
+      });
+
+      // Mostrar mensaje si no hay elementos
+      if (visibleItems === 0) {
+        emptyGallery.style.display = 'block';
+      } else {
+        emptyGallery.style.display = 'none';
+      }
+    }
+
+    // Modal de imagen
+    const modal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDate = document.getElementById('modalDate');
+    const closeModal = document.querySelector('.close-modal');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    let currentIndex = 0;
+    let currentItems = [];
+
+    // Abrir modal
+    galleryItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const category = document.querySelector('.filter-btn.active').getAttribute('data-filter');
+        currentItems = Array.from(galleryItems).filter(img => 
+          category === 'all' || img.getAttribute('data-category') === category
+        );
+        
+        currentIndex = parseInt(item.getAttribute('data-index'));
+        openModal(currentIndex);
+      });
+    });
+
+    function openModal(index) {
+      const item = currentItems[index];
+      const title = item.querySelector('.gallery-title').textContent;
+      const date = item.querySelector('.gallery-date').textContent;
+      
+      modalTitle.textContent = title;
+      modalDate.textContent = date;
+      modal.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Navegación del modal
+    prevBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + currentItems.length) % currentItems.length;
+      openModal(currentIndex);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % currentItems.length;
+      openModal(currentIndex);
+    });
+
+    // Cerrar modal
+    closeModal.addEventListener('click', () => {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    });
+
+    // Cerrar modal al hacer clic fuera
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+    });
+
+    // Navegación con teclado
+    document.addEventListener('keydown', (e) => {
+      if (modal.style.display === 'block') {
+        if (e.key === 'Escape') {
+          modal.style.display = 'none';
+          document.body.style.overflow = 'auto';
+        } else if (e.key === 'ArrowLeft') {
+          currentIndex = (currentIndex - 1 + currentItems.length) % currentItems.length;
+          openModal(currentIndex);
+        } else if (e.key === 'ArrowRight') {
+          currentIndex = (currentIndex + 1) % currentItems.length;
+          openModal(currentIndex);
+        }
+      }
+    });
+
+    // Inicializar galería
+    document.addEventListener('DOMContentLoaded', () => {
+      filterGallery('all');
+    });
+  </script>
+</body>
+</html>

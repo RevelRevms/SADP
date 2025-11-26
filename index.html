@@ -5,592 +5,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>San Antonio de Padua</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    
-    /* ===== SCROLLBAR MODERNO ===== */
-    html::-webkit-scrollbar {
-      width: 10px;
-    }
-
-    html::-webkit-scrollbar-track {
-      background: transparent;
-    }
-
-    html::-webkit-scrollbar-thumb {
-      background: rgba(201, 184, 154, 0.4);
-      border-radius: 10px;
-      transition: all 0.3s ease;
-    }
-
-    html::-webkit-scrollbar-thumb:hover {
-      background: rgba(201, 184, 154, 0.7);
-    }
-
-    /* Para Firefox */
-    * {
-      scrollbar-color: rgba(201, 184, 154, 0.4) transparent;
-      scrollbar-width: thin;
-    }
-
-    html, body { width: 100%; height: 100%; overflow-x: hidden; background: #D4C4A8; scroll-behavior: smooth; }
-
-    /* ===== WELCOME SECTION ===== */
-    .welcome {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      z-index: 10;
-    }
-
-    #intro-video {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      z-index: 2;
-    }
-/* ===== RESPONSIVE - MOBILE INTRO ALIGNMENT ===== */
-@media (max-width: 768px) {
-  #intro-video {
-    object-position: -250px center;
-    width: 100%; height: 100%;
-  }
-  
-  /* Opcional: si quieres un efecto más pronunciado */
-  /* #intro-video {
-    object-position: 20% center;
-  } */
-}
-
-    .fade-out { 
-      opacity: 0; 
-      transition: opacity 1.5s ease-out; 
-      pointer-events: none; 
-    }
-
-    /* ===== MAIN CONTENT ===== */
-    #main {
-      display: none;
-      min-height: 100vh;
-      background: linear-gradient(135deg, #F5F1E8 0%, #E8DCC8 50%, #F5F1E8 100%);
-      color: #6B4423;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      position: relative;
-      flex-direction: column;
-    }
-
-    #main.show { 
-      display: flex;
-      animation: contentFadeIn 1s ease-out forwards;
-    }
-
-    @keyframes contentFadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    /* ===== HEADER ===== */
-    header {
-      background: rgba(245, 241, 232, 0.95);
-      backdrop-filter: blur(10px);
-      padding: 0;
-      box-shadow: 0 8px 32px rgba(107, 68, 35, 0.15);
-      border-bottom: 2px solid #C9B89A;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-
-    #main.show header {
-      animation: headerSlideDown 0.8s ease-out 0.3s forwards;
-    }
-
-    @keyframes headerSlideDown {
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .header-content {
-      max-width: 1400px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 2rem;
-    }
-
-    .logo {
-      font-size: 1.8rem;
-      font-weight: bold;
-      color: #6B4423;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      opacity: 0;
-      transform: translateX(-20px);
-    }
-
-    #main.show .logo {
-      animation: logoGlow 0.8s ease-out 0.5s forwards;
-    }
-
-    @keyframes logoGlow {
-      to { opacity: 1; transform: translateX(0); }
-    }
-
-    nav ul {
-      display: flex;
-      list-style: none;
-      gap: 2rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    nav a {
-      color: #6B4423;
-      text-decoration: none;
-      font-weight: 500;
-      position: relative;
-      transition: all 0.3s ease;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-    }
-
-    nav a::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: linear-gradient(90deg, #C9B89A, #D4C4A8);
-      transition: width 0.3s ease;
-    }
-
-    nav a:hover {
-      color: #8B5A2B;
-      background: rgba(201, 184, 154, 0.2);
-    }
-
-    nav a:hover::after {
-      width: 100%;
-    }
-
-    /* ===== MAIN CONTENT AREA ===== */
-    .content-wrapper {
-      flex: 1;
-      max-width: 1400px;
-      margin: 0 auto;
-      width: 100%;
-      padding: 4rem 2rem;
-      min-height: 500px;
-      padding-top: 6rem;
-    }
-
-    .section {
-      display: none;
-      scroll-margin-top: 150px;
-    }
-
-    .section.active {
-      display: block;
-      animation: sectionFadeIn 0.6s ease-out forwards;
-    }
-
-    @keyframes sectionFadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .section h2 {
-      font-size: 3rem;
-      color: #6B4423;
-      margin-bottom: 2rem;
-      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
-      font-weight: 300;
-      letter-spacing: 2px;
-    }
-
-    .section p {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      color: #6B4423;
-      margin-bottom: 1.5rem;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    /* ===== WELCOME SECTION WITH IMAGE ===== */
-    .welcome-content {
-      display: flex;
-      align-items: center;
-      gap: 3rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .welcome-text {
-      flex: 1;
-    }
-
-    .welcome-image {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .welcome-image img {
-      max-width: 85%;
-      height: auto;
-    
-    }
-
-    .welcome-title {
-      font-size: 4rem;
-      color: #6B4423;
-      margin-bottom: 1.5rem;
-      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
-      font-weight: 300;
-      letter-spacing: 2px;
-      text-align: left;
-      opacity: 0;
-      transform: scale(0.95);
-    }
-
-    #main.show .welcome-title {
-      animation: contentAppear 1s ease-out 0.7s forwards;
-    }
-
-    .welcome-subtitle {
-      font-size: 1.8rem;
-      color: #8B5A2B;
-      margin-bottom: 1rem;
-      font-weight: 300;
-      text-align: left;
-      opacity: 0;
-      transform: scale(0.95);
-    }
-
-    #main.show .welcome-subtitle {
-      animation: contentAppear 1s ease-out 0.9s forwards;
-    }
-
-    .welcome-quote {
-      font-size: 1.2rem;
-      color: #A0704D;
-      font-style: italic;
-      margin-top: 2rem;
-      text-align: left;
-      opacity: 0;
-      transform: scale(0.95);
-    }
-
-    #main.show .welcome-quote {
-      animation: contentAppear 1s ease-out 1.1s forwards;
-    }
-
-    .welcome-image {
-  opacity: 0;
-  transform: translateX(20px);
-}
-
-    #main.show .welcome-image {
-      animation: imageSlideIn 1s ease-out 1.3s forwards;
-    }
-
-    @keyframes imageSlideIn {
-      to { opacity: 1; transform: translateX(0); }
-    }
-
-    @keyframes contentAppear {
-      to { opacity: 1; transform: scale(1); }
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    .service-card {
-      background: rgba(201, 184, 154, 0.2);
-      border: 2px solid #C9B89A;
-      padding: 2rem;
-      border-radius: 10px;
-      transition: all 0.3s ease;
-    }
-
-    .service-card:hover {
-      background: rgba(201, 184, 154, 0.3);
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(107, 68, 35, 0.2);
-    }
-
-    .service-card h3 {
-      color: #6B4423;
-      margin-bottom: 1rem;
-      font-size: 1.5rem;
-    }
-
-    .community-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-
-    .community-item {
-      background: rgba(201, 184, 154, 0.2);
-      padding: 1.5rem;
-      border-radius: 8px;
-      border-left: 4px solid #C9B89A;
-      transition: all 0.3s ease;
-    }
-
-    .community-item:hover {
-      background: rgba(201, 184, 154, 0.3);
-      transform: translateX(5px);
-    }
-
-    .community-item h3 {
-      color: #6B4423;
-      margin-bottom: 0.5rem;
-    }
-
-    .contact-form {
-      max-width: 600px;
-      margin: 2rem auto;
-      background: rgba(212, 165, 116, 0.1);
-      padding: 2rem;
-      border-radius: 10px;
-      border: 1px solid #d4a574;
-    }
-
-    .form-group {
-      margin-bottom: 1.5rem;
-    }
-
-    .form-group label {
-      display: block;
-      color: #d4a574;
-      margin-bottom: 0.5rem;
-      font-weight: 500;
-    }
-
-    .form-group input,
-    .form-group textarea {
-      width: 100%;
-      padding: 0.8rem;
-      background: rgba(255, 255, 255, 0.8);
-      border: 1px solid #d4a574;
-      color: #6B4423;
-      border-radius: 5px;
-      font-family: inherit;
-      transition: all 0.3s ease;
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus {
-      outline: none;
-      background: rgba(212, 165, 116, 0.1);
-      box-shadow: 0 0 10px rgba(212, 165, 116, 0.3);
-    }
-
-    .form-group textarea {
-      resize: vertical;
-      min-height: 120px;
-    }
-
-    .submit-btn {
-      width: 100%;
-      padding: 1rem;
-      background: linear-gradient(135deg, #C9B89A, #D4C4A8);
-      color: #6B4423;
-      border: none;
-      border-radius: 5px;
-      font-weight: 600;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .submit-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(107, 68, 35, 0.3);
-    }
-
-    /* ===== FOOTER ===== */
-    footer {
-      background: rgba(245, 241, 232, 0.95);
-      border-top: 2px solid #C9B89A;
-      padding: 2rem;
-      margin-top: auto;
-      opacity: 0;
-      transform: translateY(20px);
-    }
-
-    footer.show {
-      animation: footerSlideUp 0.8s ease-out forwards;
-    }
-
-    @keyframes footerSlideUp {
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .footer-content {
-      max-width: 1400px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin-bottom: 2rem;
-    }
-
-    .footer-section h3 {
-      color: #6B4423;
-      margin-bottom: 1rem;
-      font-size: 1.1rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .footer-section a {
-      display: block;
-      color: #8B5A2B;
-      text-decoration: none;
-      margin-bottom: 0.5rem;
-      transition: all 0.3s ease;
-    }
-
-    .footer-section a:hover {
-      color: #6B4423;
-      padding-left: 0.5rem;
-    }
-
-    .social-links {
-      display: flex;
-      gap: 1.5rem;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      margin-bottom: 2rem;
-    }
-
-    .social-icon {
-      width: 45px;
-      height: 45px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(201, 184, 154, 0.3);
-      border: 2px solid #C9B89A;
-      border-radius: 50%;
-      color: #6B4423;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      font-size: 1.2rem;
-    }
-
-    .social-icon:hover {
-      background: #C9B89A;
-      color: #F5F1E8;
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(107, 68, 35, 0.3);
-    }
-
-    .footer-bottom {
-      text-align: center;
-      padding-top: 2rem;
-      border-top: 1px solid rgba(201, 184, 154, 0.3);
-      color: #8B5A2B;
-      font-size: 0.9rem;
-    }
-
-    .footer-bottom p {
-      margin: 0.5rem 0;
-    }
-
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 768px) {
-      .welcome-content {
-        flex-direction: column;
-        text-align: center;
-      }
-      
-      .welcome-title {
-        font-size: 2.5rem;
-        text-align: center;
-      }
-
-      .welcome-subtitle {
-        font-size: 1.3rem;
-        text-align: center;
-      }
-
-      .welcome-quote {
-        text-align: center;
-      }
-
-      nav ul {
-        gap: 1rem;
-      }
-
-      nav a {
-        padding: 0.4rem 0.8rem;
-        font-size: 0.9rem;
-      }
-
-      .header-content {
-        flex-direction: column;
-        gap: 1rem;
-      }
-
-      .content-wrapper {
-        padding: 2rem 1rem;
-      }
-
-      .footer-content {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
 
   <div id="welcome" class="welcome">
     <video id="intro-video" autoplay muted playsinline>
-      <source src="public/images/intro.mp4" type="video/mp4">
+      <source src="images/intro.mp4" type="video/mp4">
     </video>
   </div>
 
   <main id="main">
+    <!-- Header con Menú Mejorado -->
     <header>
       <div class="header-content">
-        <a href="#" class="logo">
+        <a href="index.html" class="logo">
           <i class="fas fa-church"></i> Parroquia San Antonio de Padua
         </a>
-        <nav>
-          <ul>
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#sobre">Sobre Nosotros</a></li>
-            <li><a href="#servicios">Servicios</a></li>
-            <li><a href="#comunidad">Comunidad</a></li>
-            <li><a href="#contacto">Contacto</a></li>
+        
+        <!-- Menú Hamburguesa (SIEMPRE VISIBLE) -->
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <!-- Navegación Principal (OCULTA POR DEFECTO) -->
+        <nav class="nav-menu" id="navMenu">
+          <ul class="nav-list">
+            <li><a href="index.html" class="nav-link active"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="pages/quienes-somos.html" class="nav-link"><i class="fas fa-users"></i> Quiénes Somos</a></li>
+            <li><a href="pages/sacramentos.html" class="nav-link"><i class="fas fa-cross"></i> Sacramentos</a></li>
+            <li><a href="pages/horarios.html" class="nav-link"><i class="fas fa-clock"></i> Horarios</a></li>
+            <li><a href="pages/consejo-pastoral.html" class="nav-link"><i class="fas fa-hands-praying"></i> Consejo Pastoral</a></li>
+            <li><a href="pages/eventos.html" class="nav-link"><i class="fas fa-calendar-alt"></i> Eventos</a></li>
+            <li><a href="pages/noticias.html" class="nav-link"><i class="fas fa-newspaper"></i> Noticias</a></li>
+            <li><a href="pages/galeria.html" class="nav-link"><i class="fas fa-images"></i> Galería</a></li>
+            <li><a href="pages/contacto.html" class="nav-link"><i class="fas fa-envelope"></i> Contacto</a></li>
+            <li><a href="pages/donaciones.html" class="nav-link"><i class="fas fa-hand-holding-heart"></i> Donaciones</a></li>
+            <li><a href="pages/oraciones.html" class="nav-link"><i class="fas fa-pray"></i> Oraciones</a></li>
+            <li><a href="pages/enlaces.html" class="nav-link"><i class="fas fa-link"></i> Enlaces</a></li>
           </ul>
         </nav>
       </div>
     </header>
 
+    <!-- Contenido Principal Solo del Inicio -->
     <div class="content-wrapper">
       <section id="inicio" class="section active">
         <div class="welcome-content">
@@ -598,119 +58,38 @@
             <h1 class="welcome-title">¡Bienvenido!</h1>
             <p class="welcome-subtitle">San Antonio de Padua te recibe con fe y esperanza</p>
             <p class="welcome-quote">"Busca y encontrarás, toca la puerta y se te abrirá."</p>
+            
+            <!-- Menú Rápido de Accesos -->
+            <div class="quick-access">
+              <h3>Accesos Rápidos</h3>
+              <div class="quick-links">
+                <a href="pages/horarios.html" class="quick-link">
+                  <i class="fas fa-clock"></i>
+                  <span>Horarios de Misas</span>
+                </a>
+                <a href="pages/noticias.html" class="quick-link">
+                  <i class="fas fa-newspaper"></i>
+                  <span>Últimas Noticias</span>
+                </a>
+                <a href="pages/contacto.html" class="quick-link">
+                  <i class="fas fa-map-marker-alt"></i>
+                  <span>Ubicación</span>
+                </a>
+                <a href="pages/donaciones.html" class="quick-link">
+                  <i class="fas fa-hand-holding-heart"></i>
+                  <span>Donaciones</span>
+                </a>
+              </div>
+            </div>
           </div>
           <div class="welcome-image">
-            <img src="public/images/sadp.png" alt="San Antonio de Padua">
+            <img src="images/sadp.png" alt="San Antonio de Padua">
           </div>
         </div>
-      </section>
-
-      <section id="sobre" class="section">
-        <h2>Sobre Nosotros</h2>
-        <p>
-          San Antonio de Padua es una comunidad dedicada a la fe, la esperanza y la caridad. 
-          Nos esforzamos por llevar un mensaje de paz y amor a todos nuestros fieles.
-        </p>
-        <p>
-          Desde nuestros inicios, hemos trabajado incansablemente para ser un faro de luz 
-          en la comunidad, ofreciendo apoyo espiritual, educativo y social a todos aquellos 
-          que buscan fortalecer su fe y conexión con lo divino.
-        </p>
-        <p>
-          Nuestra misión es servir con humildad y dedicación, creando un espacio acogedor 
-          donde cada persona pueda encontrar paz, comprensión y orientación en su camino espiritual.
-        </p>
-      </section>
-
-      <section id="servicios" class="section">
-        <h2>Servicios</h2>
-        <div class="services-grid">
-          <div class="service-card">
-            <h3>🙏 Misas y Celebraciones</h3>
-            <p>Participar en nuestras misas diarias y celebraciones litúrgicas que fortalecen la fe comunitaria.</p>
-          </div>
-          <div class="service-card">
-            <h3>📖 Catequesis</h3>
-            <p>Programas de formación religiosa para niños, jóvenes y adultos que deseen profundizar en su fe.</p>
-          </div>
-          <div class="service-card">
-            <h3>💒 Sacramentos</h3>
-            <p>Administración de los sacramentos: bautismo, confirmación, matrimonio y extremaunción.</p>
-          </div>
-          <div class="service-card">
-            <h3>🤝 Asistencia Social</h3>
-            <p>Programa de apoyo a familias necesitadas y personas en situaciones difíciles.</p>
-          </div>
-          <div class="service-card">
-            <h3>🎓 Educación Religiosa</h3>
-            <p>Talleres y seminarios sobre temas de fe, espiritualidad y desarrollo personal.</p>
-          </div>
-          <div class="service-card">
-            <h3>🕯️ Retiros Espirituales</h3>
-            <p>Encuentros y retiros para renovar y fortalecer la vida espiritual de los creyentes.</p>
-          </div>
-        </div>
-      </section>
-
-      <section id="comunidad" class="section">
-        <h2>Comunidad</h2>
-        <div class="community-list">
-          <div class="community-item">
-            <h3>👨‍👩‍👧‍👦 Grupos Familiares</h3>
-            <p>Espacios de encuentro para familias que desean crecer juntos en fe y amor.</p>
-          </div>
-          <div class="community-item">
-            <h3>🙋 Voluntariado</h3>
-            <p>Únete a nuestro programa de voluntarios y sirve a la comunidad con el corazón.</p>
-          </div>
-          <div class="community-item">
-            <h3>🎵 Coro Parroquial</h3>
-            <p>Canta con nosotros y sé parte de nuestras celebraciones litúrgicas musicales.</p>
-          </div>
-          <div class="community-item">
-            <h3>👶 Guardería Pastoral</h3>
-            <p>Cuidado de niños durante las misas y actividades parroquiales.</p>
-          </div>
-          <div class="community-item">
-            <h3>🎯 Jóvenes en Fe</h3>
-            <p>Encuentros especiales para jóvenes que buscan vivir su fe de manera alegre y dinámica.</p>
-          </div>
-          <div class="community-item">
-            <h3>❤️ Oración Compartida</h3>
-            <p>Momentos de oración y reflexión comunitaria para fortalecer nuestros vínculos.</p>
-          </div>
-        </div>
-      </section>
-
-      <section id="contacto" class="section">
-        <h2>Contacto</h2>
-        <p>¿Tienes alguna pregunta o deseas ponerte en contacto con nosotros? Completa el formulario a continuación.</p>
-        <form class="contact-form">
-          <div class="form-group">
-            <label for="nombre">Nombre Completo</label>
-            <input type="text" id="nombre" name="nombre" required>
-          </div>
-          <div class="form-group">
-            <label for="email">Correo Electrónico</label>
-            <input type="email" id="email" name="email" required>
-          </div>
-          <div class="form-group">
-            <label for="telefono">Teléfono (Opcional)</label>
-            <input type="tel" id="telefono" name="telefono">
-          </div>
-          <div class="form-group">
-            <label for="asunto">Asunto</label>
-            <input type="text" id="asunto" name="asunto" required>
-          </div>
-          <div class="form-group">
-            <label for="mensaje">Mensaje</label>
-            <textarea id="mensaje" name="mensaje" required></textarea>
-          </div>
-          <button type="submit" class="submit-btn">Enviar Mensaje</button>
-        </form>
       </section>
     </div>
 
+    <!-- Footer -->
     <footer>
       <div class="social-links">
         <a href="https://www.facebook.com/share/1AquunAVcx/" target="_blank" class="social-icon" title="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -727,24 +106,23 @@
       <div class="footer-content">
         <div class="footer-section">
           <h3>Información</h3>
-          <a href="#">Ubicación</a>
-          <a href="#">Horarios</a>
-          <a href="#">Eventos</a>
-          <a href="#">Noticias</a>
+          <a href="pages/horarios.html">Horarios</a>
+          <a href="pages/eventos.html">Eventos</a>
+          <a href="pages/noticias.html">Noticias</a>
+          <a href="pages/galeria.html">Galería</a>
         </div>
         <div class="footer-section">
           <h3>Comunidad</h3>
-          <a href="#">Grupos de Fe</a>
-          <a href="#">Voluntariado</a>
-          <a href="#">Donaciones</a>
-          <a href="#">Testimonios</a>
+          <a href="pages/consejo-pastoral.html">Consejo Pastoral</a>
+          <a href="pages/donaciones.html">Donaciones</a>
+          <a href="pages/contacto.html">Contacto</a>
         </div>
         <div class="footer-section">
           <h3>Enlaces Útiles</h3>
           <a href="https://www.conferenciaepiscopal.org.gt/" target="_blank">Conferencia Episcopal de Guatemala</a>
           <a href="https://www.vatican.va/content/vatican/es.html" target="_blank">Página del Vaticano</a>
-          <a href="#">Biblia en Línea</a>
-          <a href="#">Oración Diaria</a>
+          <a href="pages/oraciones.html">Oraciones y Recursos</a>
+          <a href="pages/enlaces.html">Enlaces</a>
         </div>
       </div>
 
@@ -755,56 +133,6 @@
     </footer>
   </main>
 
-  <script>
-    const welcome = document.getElementById('welcome');
-    const main = document.getElementById('main');
-    const introVideo = document.getElementById('intro-video');
-    
-    function startTransition() {
-      welcome.classList.add('fade-out');
-      setTimeout(() => {
-        main.classList.add('show');
-        welcome.style.display = 'none';
-      }, 1500);
-    }
-    
-    setTimeout(() => {
-      startTransition();
-    }, 4000);
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        const href = this.getAttribute('href');
-        if (href !== '#') {
-          e.preventDefault();
-          
-          document.querySelectorAll('.section').forEach(section => {
-            section.classList.remove('active');
-          });
-          
-          const targetSection = document.querySelector(href);
-          if (targetSection) {
-            targetSection.classList.add('active');
-            targetSection.scrollIntoView({ behavior: 'smooth' });
-          }
-        }
-      });
-    });
-
-    const footer = document.querySelector('footer');
-    const observerOptions = {
-      threshold: 0.1
-    };
-
-    const observer = new IntersectionObserver(function(entries) {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          footer.classList.add('show');
-        }
-      });
-    }, observerOptions);
-
-    observer.observe(footer);
-  </script>
+  <script src="js/main.js"></script>
 </body>
 </html>

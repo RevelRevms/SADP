@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Consejo Pastoral - San Antonio de Padua</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../styles/main.css">
+  <style>
+    .organization-chart {
+      background: var(--white);
+      padding: 2rem;
+      border-radius: var(--border-radius);
+      margin: 2rem 0;
+      box-shadow: var(--shadow);
+    }
+
+    .chart-level {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .chart-item {
+      text-align: center;
+      padding: 1.5rem;
+      background: linear-gradient(135deg, #F5F1E8, #E8DCC8);
+      border-radius: var(--border-radius);
+      min-width: 200px;
+    }
+
+    .chart-item.primary {
+      background: linear-gradient(135deg, var(--accent-color), #D4C4A8);
+      color: var(--primary-color);
+    }
+
+    .ministry-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .ministry-card {
+      background: var(--white);
+      padding: 1.5rem;
+      border-radius: var(--border-radius);
+      border-left: 4px solid var(--accent-color);
+      box-shadow: var(--shadow);
+    }
+
+    .ministry-icon {
+      font-size: 2rem;
+      color: var(--secondary-color);
+      margin-bottom: 1rem;
+    }
+
+    .leader-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .leader-list li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(201, 184, 154, 0.3);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .leader-list li:last-child {
+      border-bottom: none;
+    }
+  </style>
+</head>
+<body>
+
+  <main id="main" class="show">
+    <header>
+      <div class="header-content">
+        <a href="../index.html" class="logo">
+          <i class="fas fa-church"></i> Parroquia San Antonio de Padua
+        </a>
+        
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav class="nav-menu" id="navMenu">
+          <ul class="nav-list">
+            <li><a href="../index.html" class="nav-link"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="quienes-somos.html" class="nav-link"><i class="fas fa-users"></i> Quiénes Somos</a></li>
+            <li><a href="sacramentos.html" class="nav-link"><i class="fas fa-cross"></i> Sacramentos</a></li>
+            <li><a href="horarios.html" class="nav-link"><i class="fas fa-clock"></i> Horarios</a></li>
+            <li><a href="consejo-pastoral.html" class="nav-link active"><i class="fas fa-hands-praying"></i> Consejo Pastoral</a></li>
+            <li><a href="eventos.html" class="nav-link"><i class="fas fa-calendar-alt"></i> Eventos</a></li>
+            <li><a href="noticias.html" class="nav-link"><i class="fas fa-newspaper"></i> Noticias</a></li>
+            <li><a href="galeria.html" class="nav-link"><i class="fas fa-images"></i> Galería</a></li>
+            <li><a href="contacto.html" class="nav-link"><i class="fas fa-envelope"></i> Contacto</a></li>
+            <li><a href="donaciones.html" class="nav-link"><i class="fas fa-hand-holding-heart"></i> Donaciones</a></li>
+            <li><a href="oraciones.html" class="nav-link"><i class="fas fa-pray"></i> Oraciones</a></li>
+            <li><a href="enlaces.html" class="nav-link"><i class="fas fa-link"></i> Enlaces</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div class="content-wrapper">
+      <div class="page-header">
+        <h1>Consejo Pastoral Parroquial</h1>
+        <p>Estructura organizativa y grupos de servicio de nuestra comunidad parroquial</p>
+      </div>
+
+      <div class="content-section">
+        <h2>Directiva del Consejo Permanente</h2>
+        <div class="organization-chart">
+          <div class="chart-level">
+            <div class="chart-item primary">
+              <h3>Párroco</h3>
+              <p>Padre Carlos Martínez</p>
+              <small>Presidente del Consejo</small>
+            </div>
+          </div>
+          <div class="chart-level">
+            <div class="chart-item">
+              <h3>Vicepresidente</h3>
+              <p>Juan Pérez</p>
+            </div>
+            <div class="chart-item">
+              <h3>Secretario</h3>
+              <p>María González</p>
+            </div>
+            <div class="chart-item">
+              <h3>Tesorero</h3>
+              <p>Roberto Sánchez</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section">
+        <h2>Pastorales y Ministerios</h2>
+        <div class="ministry-grid">
+          <div class="ministry-card">
+            <div class="ministry-icon">
+              <i class="fas fa-cross"></i>
+            </div>
+            <h3>Pastoral Litúrgica</h3>
+            <p>Coordina las celebraciones litúrgicas y sacramentales de la parroquia.</p>
+            <ul class="leader-list">
+              <li><span>Coordinador:</span> <span>Ana Martínez</span></li>
+              <li><span>Ministros:</span> <span>15</span></li>
+            </ul>
+          </div>
+
+          <div class="ministry-card">
+            <div class="ministry-icon">
+              <i class="fas fa-book"></i>
+            </div>
+            <h3>Pastoral Catequética</h3>
+            <p>Encargada de la formación en la fe para niños, jóvenes y adultos.</p>
+            <ul class="leader-list">
+              <li><span>Coordinadora:</span> <span>Laura Hernández</span></li>
+              <li><span>Catequistas:</span> <span>25</span></li>
+            </ul>
+          </div>
+
+          <div class="ministry-card">
+            <div class="ministry-icon">
+              <i class="fas fa-hand-holding-heart"></i>
+            </div>
+            <h3>Pastoral Social</h3>
+            <p>Servicio a los más necesitados y obras de caridad.</p>
+            <ul class="leader-list">
+              <li><span>Coordinador:</span> <span>Pedro Ramírez</span></li>
+              <li><span>Voluntarios:</span> <span>30</span></li>
+            </ul>
+          </div>
+
+          <div class="ministry-card">
+            <div class="ministry-icon">
+              <i class="fas fa-music"></i>
+            </div>
+            <h3>Ministerio de Música</h3>
+            <p>Animación litúrgica a través de la música y el canto.</p>
+            <ul class="leader-list">
+              <li><span>Coordinador:</span> <span>Carlos López</span></li>
+              <li><span>Miembros:</span> <span>12</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section">
+        <h2>Comunidades y Cofradías</h2>
+        <div class="grid-2">
+          <div class="card">
+            <h3><i class="fas fa-users"></i> Comunidades</h3>
+            <ul>
+              <li>Comunidad San José</li>
+              <li>Comunidad Santa María</li>
+              <li>Comunidad San Juan</li>
+              <li>Comunidad Santa Teresa</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-pray"></i> Cofradías</h3>
+            <ul>
+              <li>Cofradía del Santísimo</li>
+              <li>Cofradía de la Virgen del Rosario</li>
+              <li>Cofradía de San Antonio</li>
+              <li>Cofradía del Señor de los Milagros</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section">
+        <h2>Grupos Juveniles</h2>
+        <div class="grid-3">
+          <div class="card">
+            <h3><i class="fas fa-youth-group"></i> Jóvenes en Acción</h3>
+            <p>Grupo para jóvenes de 18-25 años. Encuentros los viernes.</p>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-guitar"></i> Ministerio Juvenil</h3>
+            <p>Jóvenes que sirven en liturgia y actividades parroquiales.</p>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-hands"></i> Voluntarios Jóvenes</h3>
+            <p>Servicio comunitario y misiones locales.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="social-links">
+        <a href="https://www.facebook.com/share/1AquunAVcx/" target="_blank" class="social-icon" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/parro.sanantoniodepadua?igsh=MXRneng4Nzg2MGgzNA==" target="_blank" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://share.google/6GaPNxTyI02Faqd63" target="_blank" class="social-icon" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="https://youtube.com/@sanantoniodepaduasaac?si=1y1MmxNRH4CD67kN" target="_blank" class="social-icon" title="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.tiktok.com/@sanantoniodepaduasaac?_r=1&_t=ZM-91NUqaGFZAB" target="_blank" class="social-icon" title="TikTok"><i class="fab fa-tiktok"></i></a>
+        <a href="#" class="social-icon" title="Email"><i class="fas fa-envelope"></i></a>
+      </div>
+
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Información</h3>
+          <a href="horarios.html">Horarios</a>
+          <a href="eventos.html">Eventos</a>
+          <a href="noticias.html">Noticias</a>
+          <a href="galeria.html">Galería</a>
+        </div>
+        <div class="footer-section">
+          <h3>Comunidad</h3>
+          <a href="consejo-pastoral.html">Consejo Pastoral</a>
+          <a href="donaciones.html">Donaciones</a>
+          <a href="contacto.html">Contacto</a>
+        </div>
+        <div class="footer-section">
+          <h3>Enlaces Útiles</h3>
+          <a href="https://www.conferenciaepiscopal.org.gt/" target="_blank">Conferencia Episcopal</a>
+          <a href="https://www.vatican.va/content/vatican/es.html" target="_blank">El Vaticano</a>
+          <a href="oraciones.html">Oraciones</a>
+          <a href="enlaces.html">Enlaces</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2024 San Antonio de Padua. Todos los derechos reservados.</p>
+        <p>Hecho con <span style="color: #d4a574;">❤</span> para nuestra comunidad</p>
+      </div>
+    </footer>
+  </main>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

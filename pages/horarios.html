@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Horarios - San Antonio de Padua</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../styles/main.css">
+  <style>
+    .schedule-category {
+      background: var(--white);
+      padding: 2rem;
+      border-radius: var(--border-radius);
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .schedule-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+
+    .schedule-table th {
+      background: linear-gradient(135deg, var(--accent-color), #D4C4A8);
+      color: var(--primary-color);
+      padding: 1rem;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    .schedule-table td {
+      padding: 1rem;
+      border-bottom: 1px solid rgba(201, 184, 154, 0.3);
+    }
+
+    .schedule-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .schedule-table tr:hover {
+      background: rgba(201, 184, 154, 0.1);
+    }
+
+    .highlight {
+      background: rgba(212, 165, 116, 0.1) !important;
+      font-weight: 600;
+    }
+
+    .office-hours {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .office-card {
+      background: linear-gradient(135deg, #F5F1E8, #E8DCC8);
+      padding: 1.5rem;
+      border-radius: var(--border-radius);
+      text-align: center;
+    }
+
+    .office-card i {
+      font-size: 2rem;
+      color: var(--secondary-color);
+      margin-bottom: 1rem;
+    }
+
+    .important-note {
+      background: rgba(212, 165, 116, 0.2);
+      border-left: 4px solid var(--secondary-color);
+      padding: 1.5rem;
+      border-radius: var(--border-radius);
+      margin: 2rem 0;
+    }
+  </style>
+</head>
+<body>
+
+  <main id="main" class="show">
+    <header>
+      <div class="header-content">
+        <a href="../index.html" class="logo">
+          <i class="fas fa-church"></i> Parroquia San Antonio de Padua
+        </a>
+        
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav class="nav-menu" id="navMenu">
+          <ul class="nav-list">
+            <li><a href="../index.html" class="nav-link"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="quienes-somos.html" class="nav-link"><i class="fas fa-users"></i> Quiénes Somos</a></li>
+            <li><a href="sacramentos.html" class="nav-link"><i class="fas fa-cross"></i> Sacramentos</a></li>
+            <li><a href="horarios.html" class="nav-link active"><i class="fas fa-clock"></i> Horarios</a></li>
+            <li><a href="consejo-pastoral.html" class="nav-link"><i class="fas fa-hands-praying"></i> Consejo Pastoral</a></li>
+            <li><a href="eventos.html" class="nav-link"><i class="fas fa-calendar-alt"></i> Eventos</a></li>
+            <li><a href="noticias.html" class="nav-link"><i class="fas fa-newspaper"></i> Noticias</a></li>
+            <li><a href="galeria.html" class="nav-link"><i class="fas fa-images"></i> Galería</a></li>
+            <li><a href="contacto.html" class="nav-link"><i class="fas fa-envelope"></i> Contacto</a></li>
+            <li><a href="donaciones.html" class="nav-link"><i class="fas fa-hand-holding-heart"></i> Donaciones</a></li>
+            <li><a href="oraciones.html" class="nav-link"><i class="fas fa-pray"></i> Oraciones</a></li>
+            <li><a href="enlaces.html" class="nav-link"><i class="fas fa-link"></i> Enlaces</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div class="content-wrapper">
+      <div class="page-header">
+        <h1>Horarios</h1>
+        <p>Planifica tu visita y participación en las actividades de nuestra parroquia</p>
+      </div>
+
+      <div class="important-note">
+        <h3><i class="fas fa-info-circle"></i> Importante</h3>
+        <p>Los horarios pueden sufrir modificaciones en días festivos o circunstancias especiales. Consulte nuestro boletín semanal o redes sociales para actualizaciones.</p>
+      </div>
+
+      <!-- Misas -->
+      <div class="schedule-category">
+        <h2><i class="fas fa-church"></i> Horarios de Misas</h2>
+        <table class="schedule-table">
+          <thead>
+            <tr>
+              <th>Día</th>
+              <th>Horario</th>
+              <th>Notas</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Lunes a Viernes</td>
+              <td>7:00 AM y 6:00 PM</td>
+              <td>Misa diaria</td>
+            </tr>
+            <tr class="highlight">
+              <td>Sábados</td>
+              <td>7:00 AM y 5:00 PM</td>
+              <td>Misa de precepto (vigilia dominical)</td>
+            </tr>
+            <tr class="highlight">
+              <td>Domingos</td>
+              <td>7:00 AM, 9:00 AM, 11:00 AM y 6:00 PM</td>
+              <td>Misa dominical</td>
+            </tr>
+            <tr>
+              <td>Primer Viernes</td>
+              <td>7:00 PM</td>
+              <td>Misa especial con adoración al Santísimo</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Confesiones -->
+      <div class="schedule-category">
+        <h2><i class="fas fa-hand-holding-heart"></i> Confesiones</h2>
+        <table class="schedule-table">
+          <thead>
+            <tr>
+              <th>Día</th>
+              <th>Horario</th>
+              <th>Lugar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Lunes a Viernes</td>
+              <td>30 minutos antes de cada misa</td>
+              <td>Confesionarios</td>
+            </tr>
+            <tr>
+              <td>Sábados</td>
+              <td>3:00 PM - 4:30 PM</td>
+              <td>Confesionarios</td>
+            </tr>
+            <tr>
+              <td>Domingos</td>
+              <td>30 minutos antes de cada misa</td>
+              <td>Confesionarios</td>
+            </tr>
+            <tr>
+              <td>Por cita</td>
+              <td>Comuníquese con la oficina</td>
+              <td>Despacho parroquial</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Atención en Oficina -->
+      <div class="schedule-category">
+        <h2><i class="fas fa-door-open"></i> Atención en Despacho Parroquial</h2>
+        <div class="office-hours">
+          <div class="office-card">
+            <i class="fas fa-clock"></i>
+            <h3>Lunes a Viernes</h3>
+            <p>9:00 AM - 12:00 PM</p>
+            <p>3:00 PM - 6:00 PM</p>
+          </div>
+          <div class="office-card">
+            <i class="fas fa-clock"></i>
+            <h3>Sábados</h3>
+            <p>9:00 AM - 12:00 PM</p>
+          </div>
+          <div class="office-card">
+            <i class="fas fa-door-closed"></i>
+            <h3>Domingos</h3>
+            <p>Cerrado</p>
+            <small>Atención solo después de misas</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- Actividades Pastorales -->
+      <div class="schedule-category">
+        <h2><i class="fas fa-users"></i> Actividades Pastorales</h2>
+        <table class="schedule-table">
+          <thead>
+            <tr>
+              <th>Actividad</th>
+              <th>Día</th>
+              <th>Horario</th>
+              <th>Lugar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Catequesis de Niños</td>
+              <td>Sábados</td>
+              <td>8:00 AM - 10:00 AM</td>
+              <td>Salón Parroquial</td>
+            </tr>
+            <tr>
+              <td>Grupo de Jóvenes</td>
+              <td>Viernes</td>
+              <td>6:00 PM - 8:00 PM</td>
+              <td>Salón Juvenil</td>
+            </tr>
+            <tr>
+              <td>Grupo de Oración</td>
+              <td>Miércoles</td>
+              <td>7:00 PM - 8:30 PM</td>
+              <td>Capilla</td>
+            </tr>
+            <tr>
+              <td>Coro Parroquial</td>
+              <td>Jueves</td>
+              <td>6:00 PM - 8:00 PM</td>
+              <td>Coros</td>
+            </tr>
+            <tr>
+              <td>Escuela de Padres</td>
+              <td>Martes</td>
+              <td>5:00 PM - 6:30 PM</td>
+              <td>Salón Parroquial</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Adoración al Santísimo -->
+      <div class="schedule-category">
+        <h2><i class="fas fa-cross"></i> Adoración al Santísimo</h2>
+        <table class="schedule-table">
+          <thead>
+            <tr>
+              <th>Día</th>
+              <th>Horario</th>
+              <th>Actividad</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Primer Viernes</td>
+              <td>7:00 PM - 8:00 PM</td>
+              <td>Adoración con cantos</td>
+            </tr>
+            <tr>
+              <td>Jueves</td>
+              <td>4:00 PM - 5:00 PM</td>
+              <td>Hora Santa</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="content-section">
+        <h2>Recordatorios Importantes</h2>
+        <div class="grid-2">
+          <div class="card">
+            <h3><i class="fas fa-bell"></i> Días de Precepto</h3>
+            <p>Recuerda que además de los domingos, son días de precepto todas las solemnidades y fiestas de guardar establecidas por la Iglesia.</p>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-calendar-check"></i> Reservas</h3>
+            <p>Para sacramentos especiales (Bautizos, Matrimonios) se requiere reserva con anticipación en la oficina parroquial.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="social-links">
+        <a href="https://www.facebook.com/share/1AquunAVcx/" target="_blank" class="social-icon" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/parro.sanantoniodepadua?igsh=MXRneng4Nzg2MGgzNA==" target="_blank" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://share.google/6GaPNxTyI02Faqd63" target="_blank" class="social-icon" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="https://youtube.com/@sanantoniodepaduasaac?si=1y1MmxNRH4CD67kN" target="_blank" class="social-icon" title="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.tiktok.com/@sanantoniodepaduasaac?_r=1&_t=ZM-91NUqaGFZAB" target="_blank" class="social-icon" title="TikTok"><i class="fab fa-tiktok"></i></a>
+        <a href="#" class="social-icon" title="Email"><i class="fas fa-envelope"></i></a>
+      </div>
+
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Información</h3>
+          <a href="horarios.html">Horarios</a>
+          <a href="eventos.html">Eventos</a>
+          <a href="noticias.html">Noticias</a>
+          <a href="galeria.html">Galería</a>
+        </div>
+        <div class="footer-section">
+          <h3>Comunidad</h3>
+          <a href="consejo-pastoral.html">Consejo Pastoral</a>
+          <a href="donaciones.html">Donaciones</a>
+          <a href="contacto.html">Contacto</a>
+        </div>
+        <div class="footer-section">
+          <h3>Enlaces Útiles</h3>
+          <a href="https://www.conferenciaepiscopal.org.gt/" target="_blank">Conferencia Episcopal</a>
+          <a href="https://www.vatican.va/content/vatican/es.html" target="_blank">El Vaticano</a>
+          <a href="oraciones.html">Oraciones</a>
+          <a href="enlaces.html">Enlaces</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2024 San Antonio de Padua. Todos los derechos reservados.</p>
+        <p>Hecho con <span style="color: #d4a574;">❤</span> para nuestra comunidad</p>
+      </div>
+    </footer>
+  </main>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

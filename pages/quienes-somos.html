@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quiénes Somos - San Antonio de Padua</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../styles/main.css">
+  <style>
+    .history-timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 2rem 0;
+    }
+
+    .timeline-item {
+      background: var(--white);
+      padding: 2rem;
+      margin: 2rem 0;
+      border-radius: var(--border-radius);
+      border-left: 4px solid var(--accent-color);
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -10px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      background: var(--accent-color);
+      border-radius: 50%;
+      border: 4px solid var(--white);
+    }
+
+    .timeline-year {
+      font-size: 1.5rem;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .team-member {
+      text-align: center;
+      padding: 2rem;
+      background: var(--white);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .team-member:hover {
+      transform: translateY(-5px);
+    }
+
+    .member-photo {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      background: linear-gradient(135deg, var(--accent-color), #D4C4A8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 3rem;
+    }
+
+    .member-role {
+      color: var(--secondary-color);
+      font-style: italic;
+      margin: 0.5rem 0;
+    }
+  </style>
+</head>
+<body>
+
+  <main id="main" class="show">
+    <header>
+      <div class="header-content">
+        <a href="../index.html" class="logo">
+          <i class="fas fa-church"></i> Parroquia San Antonio de Padua
+        </a>
+        
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav class="nav-menu" id="navMenu">
+          <ul class="nav-list">
+            <li><a href="../index.html" class="nav-link"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="quienes-somos.html" class="nav-link active"><i class="fas fa-users"></i> Quiénes Somos</a></li>
+            <li><a href="sacramentos.html" class="nav-link"><i class="fas fa-cross"></i> Sacramentos</a></li>
+            <li><a href="horarios.html" class="nav-link"><i class="fas fa-clock"></i> Horarios</a></li>
+            <li><a href="consejo-pastoral.html" class="nav-link"><i class="fas fa-hands-praying"></i> Consejo Pastoral</a></li>
+            <li><a href="eventos.html" class="nav-link"><i class="fas fa-calendar-alt"></i> Eventos</a></li>
+            <li><a href="noticias.html" class="nav-link"><i class="fas fa-newspaper"></i> Noticias</a></li>
+            <li><a href="galeria.html" class="nav-link"><i class="fas fa-images"></i> Galería</a></li>
+            <li><a href="contacto.html" class="nav-link"><i class="fas fa-envelope"></i> Contacto</a></li>
+            <li><a href="donaciones.html" class="nav-link"><i class="fas fa-hand-holding-heart"></i> Donaciones</a></li>
+            <li><a href="oraciones.html" class="nav-link"><i class="fas fa-pray"></i> Oraciones</a></li>
+            <li><a href="enlaces.html" class="nav-link"><i class="fas fa-link"></i> Enlaces</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div class="content-wrapper">
+      <div class="page-header">
+        <h1>Quiénes Somos</h1>
+        <p>Conoce nuestra historia, misión y el equipo que sirve a nuestra comunidad</p>
+      </div>
+
+      <div class="content-section">
+        <h2>Nuestra Historia</h2>
+        <div class="history-timeline">
+          <div class="timeline-item">
+            <div class="timeline-year">1965</div>
+            <h3>Fundación de la Parroquia</h3>
+            <p>La parroquia San Antonio de Padua fue fundada para servir a la comunidad creciente del área, bajo la dirección del primer párroco Padre Miguel Ángel.</p>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-year">1980</div>
+            <h3>Expansión y Crecimiento</h3>
+            <p>Se construye el templo actual y se establecen los primeros grupos pastorales y ministerios parroquiales.</p>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-year">2005</div>
+            <h3>Renovación Pastoral</h3>
+            <p>Implementación de nuevos programas de evangelización y fortalecimiento de la comunidad parroquial.</p>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-year">2020</div>
+            <h3>Adaptación Digital</h3>
+            <p>Ante la pandemia, la parroquia implementa transmisiones en línea y recursos digitales para mantener la comunidad unida.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section">
+        <h2>Misión y Visión</h2>
+        <div class="grid-2">
+          <div class="card">
+            <h3><i class="fas fa-bullseye"></i> Nuestra Misión</h3>
+            <p>Ser una comunidad católica que anuncia el Evangelio de Jesucristo, celebra los sacramentos con fe y alegría, y sirve a los más necesitados siguiendo el ejemplo de San Antonio de Padua.</p>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-eye"></i> Nuestra Visión</h3>
+            <p>Ser una parroquia evangelizadora, acogedora y misionera, donde todos los fieles encuentren un espacio para crecer en su fe, formar comunidad y participar activamente en la vida eclesial.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section">
+        <h2>Nuestro Equipo Pastoral</h2>
+        <div class="team-grid">
+          <div class="team-member">
+            <div class="member-photo">
+              <i class="fas fa-user"></i>
+            </div>
+            <h3>Padre Carlos Martínez</h3>
+            <p class="member-role">Párroco</p>
+            <p>Responsable de la dirección espiritual y administrativa de la parroquia.</p>
+          </div>
+          
+          <div class="team-member">
+            <div class="member-photo">
+              <i class="fas fa-user"></i>
+            </div>
+            <h3>Diácono José López</h3>
+            <p class="member-role">Diácono Permanente</p>
+            <p>Apoya en la liturgia, predicación y atención a la comunidad.</p>
+          </div>
+          
+          <div class="team-member">
+            <div class="member-photo">
+              <i class="fas fa-user"></i>
+            </div>
+            <h3>María González</h3>
+            <p class="member-role">Coordinadora Pastoral</p>
+            <p>Coordina los diferentes grupos y ministerios parroquiales.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section">
+        <h2>Valores Parroquiales</h2>
+        <div class="grid-3">
+          <div class="card">
+            <h3><i class="fas fa-heart"></i> Caridad</h3>
+            <p>Servimos con amor y compasión a todos los miembros de nuestra comunidad.</p>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-handshake"></i> Comunión</h3>
+            <p>Fomentamos la unidad y el trabajo en equipo entre todos los fieles.</p>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-cross"></i> Fe</h3>
+            <p>Vivimos y transmitimos nuestra fe católica con alegría y convicción.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="social-links">
+        <a href="https://www.facebook.com/share/1AquunAVcx/" target="_blank" class="social-icon" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/parro.sanantoniodepadua?igsh=MXRneng4Nzg2MGgzNA==" target="_blank" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://share.google/6GaPNxTyI02Faqd63" target="_blank" class="social-icon" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="https://youtube.com/@sanantoniodepaduasaac?si=1y1MmxNRH4CD67kN" target="_blank" class="social-icon" title="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.tiktok.com/@sanantoniodepaduasaac?_r=1&_t=ZM-91NUqaGFZAB" target="_blank" class="social-icon" title="TikTok"><i class="fab fa-tiktok"></i></a>
+        <a href="#" class="social-icon" title="Email"><i class="fas fa-envelope"></i></a>
+      </div>
+
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Información</h3>
+          <a href="horarios.html">Horarios</a>
+          <a href="eventos.html">Eventos</a>
+          <a href="noticias.html">Noticias</a>
+          <a href="galeria.html">Galería</a>
+        </div>
+        <div class="footer-section">
+          <h3>Comunidad</h3>
+          <a href="consejo-pastoral.html">Consejo Pastoral</a>
+          <a href="donaciones.html">Donaciones</a>
+          <a href="contacto.html">Contacto</a>
+        </div>
+        <div class="footer-section">
+          <h3>Enlaces Útiles</h3>
+          <a href="https://www.conferenciaepiscopal.org.gt/" target="_blank">Conferencia Episcopal</a>
+          <a href="https://www.vatican.va/content/vatican/es.html" target="_blank">El Vaticano</a>
+          <a href="oraciones.html">Oraciones</a>
+          <a href="enlaces.html">Enlaces</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2024 San Antonio de Padua. Todos los derechos reservados.</p>
+        <p>Hecho con <span style="color: #d4a574;">❤</span> para nuestra comunidad</p>
+      </div>
+    </footer>
+  </main>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

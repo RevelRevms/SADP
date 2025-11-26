@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Eventos - San Antonio de Padua</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../styles/main.css">
+  <style>
+    .calendar-navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 2rem 0;
+      padding: 1rem;
+      background: var(--white);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+    }
+
+    .calendar-header {
+      text-align: center;
+    }
+
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .event-card {
+      background: var(--white);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .event-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .event-date {
+      background: linear-gradient(135deg, var(--accent-color), #D4C4A8);
+      color: var(--primary-color);
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .event-day {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    .event-month {
+      font-size: 1rem;
+    }
+
+    .event-content {
+      padding: 1.5rem;
+    }
+
+    .event-time {
+      color: var(--secondary-color);
+      margin: 0.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .event-category {
+      display: inline-block;
+      background: rgba(212, 165, 116, 0.2);
+      color: var(--secondary-color);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    .upcoming-events {
+      margin: 3rem 0;
+    }
+
+    .event-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .event-list li {
+      padding: 1rem;
+      border-bottom: 1px solid rgba(201, 184, 154, 0.3);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .event-list li:last-child {
+      border-bottom: none;
+    }
+
+    .event-highlight {
+      background: rgba(212, 165, 116, 0.1);
+      border-left: 4px solid var(--secondary-color);
+    }
+  </style>
+</head>
+<body>
+
+  <main id="main" class="show">
+    <header>
+      <div class="header-content">
+        <a href="../index.html" class="logo">
+          <i class="fas fa-church"></i> Parroquia San Antonio de Padua
+        </a>
+        
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav class="nav-menu" id="navMenu">
+          <ul class="nav-list">
+            <li><a href="../index.html" class="nav-link"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="quienes-somos.html" class="nav-link"><i class="fas fa-users"></i> Quiénes Somos</a></li>
+            <li><a href="sacramentos.html" class="nav-link"><i class="fas fa-cross"></i> Sacramentos</a></li>
+            <li><a href="horarios.html" class="nav-link"><i class="fas fa-clock"></i> Horarios</a></li>
+            <li><a href="consejo-pastoral.html" class="nav-link"><i class="fas fa-hands-praying"></i> Consejo Pastoral</a></li>
+            <li><a href="eventos.html" class="nav-link active"><i class="fas fa-calendar-alt"></i> Eventos</a></li>
+            <li><a href="noticias.html" class="nav-link"><i class="fas fa-newspaper"></i> Noticias</a></li>
+            <li><a href="galeria.html" class="nav-link"><i class="fas fa-images"></i> Galería</a></li>
+            <li><a href="contacto.html" class="nav-link"><i class="fas fa-envelope"></i> Contacto</a></li>
+            <li><a href="donaciones.html" class="nav-link"><i class="fas fa-hand-holding-heart"></i> Donaciones</a></li>
+            <li><a href="oraciones.html" class="nav-link"><i class="fas fa-pray"></i> Oraciones</a></li>
+            <li><a href="enlaces.html" class="nav-link"><i class="fas fa-link"></i> Enlaces</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div class="content-wrapper">
+      <div class="page-header">
+        <h1>Eventos Parroquiales</h1>
+        <p>Participa en nuestras actividades espirituales, formativas y comunitarias</p>
+      </div>
+
+      <div class="calendar-navigation">
+        <button class="nav-button">
+          <i class="fas fa-chevron-left"></i> Mes Anterior
+        </button>
+        <div class="calendar-header">
+          <h2>Diciembre 2024</h2>
+          <p>Calendario de actividades parroquiales</p>
+        </div>
+        <button class="nav-button">
+          Mes Siguiente <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+
+      <div class="content-section">
+        <h2>Próximos Eventos Destacados</h2>
+        <div class="calendar-grid">
+          <div class="event-card event-highlight">
+            <div class="event-date">
+              <div class="event-day">13</div>
+              <div class="event-month">DICIEMBRE</div>
+            </div>
+            <div class="event-content">
+              <h3>Fiesta de Santa Lucía</h3>
+              <p class="event-time">
+                <i class="fas fa-clock"></i> 6:00 PM - 8:00 PM
+              </p>
+              <p>Celebración especial en honor a Santa Lucía con procesión y misa solemne.</p>
+              <span class="event-category">Celebración</span>
+            </div>
+          </div>
+
+          <div class="event-card">
+            <div class="event-date">
+              <div class="event-day">15</div>
+              <div class="event-month">DICIEMBRE</div>
+            </div>
+            <div class="event-content">
+              <h3>Tercer Domingo de Adviento</h3>
+              <p class="event-time">
+                <i class="fas fa-clock"></i> Durante todas las misas
+              </p>
+              <p>Domingo de Gaudete - Celebración especial del Adviento.</p>
+              <span class="event-category">Liturgia</span>
+            </div>
+          </div>
+
+          <div class="event-card">
+            <div class="event-date">
+              <div class="event-day">16</div>
+              <div class="event-month">DICIEMBRE</div>
+            </div>
+            <div class="event-content">
+              <h3>Posadas Comunitarias</h3>
+              <p class="event-time">
+                <i class="fas fa-clock"></i> 7:00 PM
+              </p>
+              <p>Inicio de las posadas navideñas en diferentes comunidades.</p>
+              <span class="event-category">Tradición</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="upcoming-events">
+        <h2>Actividades de la Semana</h2>
+        <div class="content-section">
+          <ul class="event-list">
+            <li>
+              <div>
+                <strong>Lunes 9 Dic</strong>
+                <p>Grupo de Oración - Capilla (7:00 PM)</p>
+              </div>
+              <span class="event-category">Oración</span>
+            </li>
+            <li>
+              <div>
+                <strong>Martes 10 Dic</strong>
+                <p>Escuela de Padres - Salón Parroquial (5:00 PM)</p>
+              </div>
+              <span class="event-category">Formación</span>
+            </li>
+            <li>
+              <div>
+                <strong>Miércoles 11 Dic</strong>
+                <p>Adoración al Santísimo - Templo (4:00 PM)</p>
+              </div>
+              <span class="event-category">Liturgia</span>
+            </li>
+            <li>
+              <div>
+                <strong>Jueves 12 Dic</strong>
+                <p>Ensayos del Coro - Coros (6:00 PM)</p>
+              </div>
+              <span class="event-category">Música</span>
+            </li>
+            <li>
+              <div>
+                <strong>Viernes 13 Dic</strong>
+                <p>Grupo de Jóvenes - Salón Juvenil (6:00 PM)</p>
+              </div>
+              <span class="event-category">Juventud</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="content-section">
+        <h2>Triduos y Novenas</h2>
+        <div class="grid-2">
+          <div class="card">
+            <h3><i class="fas fa-praying-hands"></i> Triduo a San Antonio</h3>
+            <p><strong>Fechas:</strong> 10-12 de Junio</p>
+            <p><strong>Horario:</strong> 7:00 PM</p>
+            <p>Preparación para la fiesta de nuestro patrono.</p>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-candle"></i> Novena de Navidad</h3>
+            <p><strong>Fechas:</strong> 16-24 de Diciembre</p>
+            <p><strong>Horario:</strong> 6:30 PM</p>
+            <p>Preparación espiritual para la Navidad.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section">
+        <h2>Retiros Espirituales</h2>
+        <div class="grid-3">
+          <div class="card">
+            <h3><i class="fas fa-mountain"></i> Retiro de Adviento</h3>
+            <p><strong>Fecha:</strong> 7 de Diciembre</p>
+            <p><strong>Lugar:</strong> Casa de Retiros</p>
+            <p>Preparación para la venida del Señor.</p>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-heart"></i> Retiro Juvenil</h3>
+            <p><strong>Fecha:</strong> 15 de Enero</p>
+            <p><strong>Lugar:</strong> Campamento</p>
+            <p>Para jóvenes de 15-25 años.</p>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-family"></i> Retiro Familiar</h3>
+            <p><strong>Fecha:</strong> 20 de Febrero</p>
+            <p><strong>Lugar:</strong> Parroquia</p>
+            <p>Para fortalecer la fe en familia.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="social-links">
+        <a href="https://www.facebook.com/share/1AquunAVcx/" target="_blank" class="social-icon" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/parro.sanantoniodepadua?igsh=MXRneng4Nzg2MGgzNA==" target="_blank" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://share.google/6GaPNxTyI02Faqd63" target="_blank" class="social-icon" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="https://youtube.com/@sanantoniodepaduasaac?si=1y1MmxNRH4CD67kN" target="_blank" class="social-icon" title="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.tiktok.com/@sanantoniodepaduasaac?_r=1&_t=ZM-91NUqaGFZAB" target="_blank" class="social-icon" title="TikTok"><i class="fab fa-tiktok"></i></a>
+        <a href="#" class="social-icon" title="Email"><i class="fas fa-envelope"></i></a>
+      </div>
+
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Información</h3>
+          <a href="horarios.html">Horarios</a>
+          <a href="eventos.html">Eventos</a>
+          <a href="noticias.html">Noticias</a>
+          <a href="galeria.html">Galería</a>
+        </div>
+        <div class="footer-section">
+          <h3>Comunidad</h3>
+          <a href="consejo-pastoral.html">Consejo Pastoral</a>
+          <a href="donaciones.html">Donaciones</a>
+          <a href="contacto.html">Contacto</a>
+        </div>
+        <div class="footer-section">
+          <h3>Enlaces Útiles</h3>
+          <a href="https://www.conferenciaepiscopal.org.gt/" target="_blank">Conferencia Episcopal</a>
+          <a href="https://www.vatican.va/content/vatican/es.html" target="_blank">El Vaticano</a>
+          <a href="oraciones.html">Oraciones</a>
+          <a href="enlaces.html">Enlaces</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2024 San Antonio de Padua. Todos los derechos reservados.</p>
+        <p>Hecho con <span style="color: #d4a574;">❤</span> para nuestra comunidad</p>
+      </div>
+    </footer>
+  </main>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

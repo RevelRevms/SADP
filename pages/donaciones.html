@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Donaciones - San Antonio de Padua</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../styles/main.css">
+  <style>
+    .donation-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .donation-card {
+      background: var(--white);
+      padding: 2rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      text-align: center;
+      transition: var(--transition);
+      border-top: 4px solid var(--accent-color);
+    }
+
+    .donation-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .donation-icon {
+      font-size: 2.5rem;
+      color: var(--secondary-color);
+      margin-bottom: 1rem;
+    }
+
+    .donation-amounts {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin: 1rem 0;
+      flex-wrap: wrap;
+    }
+
+    .amount-btn {
+      padding: 0.5rem 1rem;
+      border: 2px solid var(--accent-color);
+      background: transparent;
+      color: var(--primary-color);
+      border-radius: 25px;
+      cursor: pointer;
+      transition: var(--transition);
+      font-weight: 500;
+    }
+
+    .amount-btn:hover, .amount-btn.active {
+      background: var(--accent-color);
+      color: var(--white);
+    }
+
+    .custom-amount {
+      margin: 1rem 0;
+    }
+
+    .custom-amount input {
+      width: 100%;
+      padding: 0.8rem;
+      border: 2px solid var(--accent-color);
+      border-radius: var(--border-radius);
+      text-align: center;
+      font-size: 1.1rem;
+    }
+
+    .donate-btn {
+      width: 100%;
+      padding: 1rem;
+      background: linear-gradient(135deg, var(--accent-color), #D4C4A8);
+      color: var(--primary-color);
+      border: none;
+      border-radius: var(--border-radius);
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: var(--transition);
+      margin-top: 1rem;
+    }
+
+    .donate-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(107, 68, 35, 0.3);
+    }
+
+    .impact-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .stat-card {
+      background: linear-gradient(135deg, #F5F1E8, #E8DCC8);
+      padding: 1.5rem;
+      border-radius: var(--border-radius);
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .transparency-section {
+      background: rgba(201, 184, 154, 0.1);
+      padding: 2rem;
+      border-radius: var(--border-radius);
+      margin: 2rem 0;
+    }
+
+    .payment-methods {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1rem 0;
+      flex-wrap: wrap;
+    }
+
+    .payment-method {
+      padding: 1rem;
+      background: var(--white);
+      border-radius: var(--border-radius);
+      border: 2px solid var(--accent-color);
+      min-width: 120px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <main id="main" class="show">
+    <header>
+      <div class="header-content">
+        <a href="../index.html" class="logo">
+          <i class="fas fa-church"></i> Parroquia San Antonio de Padua
+        </a>
+        
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav class="nav-menu" id="navMenu">
+          <ul class="nav-list">
+            <li><a href="../index.html" class="nav-link"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="quienes-somos.html" class="nav-link"><i class="fas fa-users"></i> Quiénes Somos</a></li>
+            <li><a href="sacramentos.html" class="nav-link"><i class="fas fa-cross"></i> Sacramentos</a></li>
+            <li><a href="horarios.html" class="nav-link"><i class="fas fa-clock"></i> Horarios</a></li>
+            <li><a href="consejo-pastoral.html" class="nav-link"><i class="fas fa-hands-praying"></i> Consejo Pastoral</a></li>
+            <li><a href="eventos.html" class="nav-link"><i class="fas fa-calendar-alt"></i> Eventos</a></li>
+            <li><a href="noticias.html" class="nav-link"><i class="fas fa-newspaper"></i> Noticias</a></li>
+            <li><a href="galeria.html" class="nav-link"><i class="fas fa-images"></i> Galería</a></li>
+            <li><a href="contacto.html" class="nav-link"><i class="fas fa-envelope"></i> Contacto</a></li>
+            <li><a href="donaciones.html" class="nav-link active"><i class="fas fa-hand-holding-heart"></i> Donaciones</a></li>
+            <li><a href="oraciones.html" class="nav-link"><i class="fas fa-pray"></i> Oraciones</a></li>
+            <li><a href="enlaces.html" class="nav-link"><i class="fas fa-link"></i> Enlaces</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div class="content-wrapper">
+      <div class="page-header">
+        <h1>Donaciones</h1>
+        <p>Tu generosidad nos ayuda a continuar con nuestra labor pastoral y de servicio</p>
+      </div>
+
+      <div class="content-section">
+        <h2>Haz tu Donación</h2>
+        <p>Tu contribución nos permite mantener nuestras actividades pastorales, programas de ayuda social y el mantenimiento de nuestro templo. Cada donación, sin importar el monto, hace la diferencia.</p>
+
+        <div class="donation-options">
+          <div class="donation-card">
+            <div class="donation-icon">
+              <i class="fas fa-hand-holding-usd"></i>
+            </div>
+            <h3>Donación Única</h3>
+            <p>Contribución única para apoyar nuestros proyectos actuales</p>
+            
+            <div class="donation-amounts">
+              <button class="amount-btn" data-amount="50">Q50</button>
+              <button class="amount-btn" data-amount="100">Q100</button>
+              <button class="amount-btn active" data-amount="200">Q200</button>
+              <button class="amount-btn" data-amount="500">Q500</button>
+            </div>
+            
+            <div class="custom-amount">
+              <input type="number" placeholder="Otro monto (Q)" min="1" id="customAmount">
+            </div>
+            
+            <button class="donate-btn" onclick="processDonation()">
+              <i class="fas fa-donate"></i> Donar Ahora
+            </button>
+          </div>
+
+          <div class="donation-card">
+            <div class="donation-icon">
+              <i class="fas fa-calendar-check"></i>
+            </div>
+            <h3>Donación Mensual</h3>
+            <p>Apoyo recurrente para sostener nuestras actividades permanentes</p>
+            
+            <div class="donation-amounts">
+              <button class="amount-btn" data-amount="50">Q50/mes</button>
+              <button class="amount-btn active" data-amount="100">Q100/mes</button>
+              <button class="amount-btn" data-amount="200">Q200/mes</button>
+            </div>
+            
+            <div class="custom-amount">
+              <input type="number" placeholder="Otro monto mensual (Q)" min="1" id="customMonthly">
+            </div>
+            
+            <button class="donate-btn" onclick="processMonthlyDonation()">
+              <i class="fas fa-redo"></i> Donar Mensualmente
+            </button>
+          </div>
+
+          <div class="donation-card">
+            <div class="donation-icon">
+              <i class="fas fa-gift"></i>
+            </div>
+            <h3>Donación en Especie</h3>
+            <p>Contribuye con alimentos, materiales o servicios</p>
+            <ul style="text-align: left; margin: 1rem 0;">
+              <li>Alimentos no perecederos</li>
+              <li>Materiales de construcción</li>
+              <li>Suministros para oficina</li>
+              <li>Servicios profesionales</li>
+            </ul>
+            <button class="donate-btn" onclick="location.href='contacto.html'">
+              <i class="fas fa-box"></i> Coordinar Donación
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="impact-stats">
+        <div class="stat-card">
+          <div class="stat-number">15+</div>
+          <p>Programas Sociales</p>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">200+</div>
+          <p>Familias Beneficiadas</p>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">50+</div>
+          <p>Voluntarios Activos</p>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">100%</div>
+          <p>Transparencia</p>
+        </div>
+      </div>
+
+      <div class="transparency-section">
+        <h2>Transparencia y Uso de Fondos</h2>
+        <p>Nos comprometemos a utilizar cada donación de manera responsable y transparente. Aquí te mostramos cómo se distribuyen los fondos:</p>
+        
+        <div class="grid-2" style="margin-top: 2rem;">
+          <div class="card">
+            <h3><i class="fas fa-church"></i> Mantenimiento del Templo (40%)</h3>
+            <p>Reparaciones, limpieza, servicios básicos y mejoras de nuestra iglesia.</p>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-users"></i> Programas Pastorales (30%)</h3>
+            <p>Catequesis, grupos juveniles, formación y actividades espirituales.</p>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-hand-holding-heart"></i> Ayuda Social (20%)</h3>
+            <p>Programas de alimentación, apoyo a familias necesitadas y emergencias.</p>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-cogs"></i> Gastos Operativos (10%)</h3>
+            <p>Administración, servicios y materiales necesarios para el funcionamiento.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section">
+        <h2>Métodos de Pago</h2>
+        <p>Aceptamos diferentes formas de pago para tu comodidad:</p>
+        
+        <div class="payment-methods">
+          <div class="payment-method">
+            <i class="fas fa-money-bill-wave" style="font-size: 2rem; color: var(--secondary-color);"></i>
+            <p>Efectivo</p>
+          </div>
+          <div class="payment-method">
+            <i class="fas fa-credit-card" style="font-size: 2rem; color: var(--secondary-color);"></i>
+            <p>Tarjeta</p>
+          </div>
+          <div class="payment-method">
+            <i class="fas fa-mobile-alt" style="font-size: 2rem; color: var(--secondary-color);"></i>
+            <p>Transferencia</p>
+          </div>
+          <div class="payment-method">
+            <i class="fab fa-paypal" style="font-size: 2rem; color: var(--secondary-color);"></i>
+            <p>PayPal</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section">
+        <h2>Información Fiscal</h2>
+        <div class="grid-2">
+          <div class="card">
+            <h3><i class="fas fa-file-invoice"></i> Recibos Deducibles</h3>
+            <p>Emitimos recibos oficiales deducibles de impuestos por todas las donaciones. Solicita tu recibo en la oficina parroquial.</p>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-search"></i> Transparencia</h3>
+            <p>Nuestros estados financieros están disponibles para consulta. Mantenemos total transparencia en el manejo de los recursos.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="social-links">
+        <a href="https://www.facebook.com/share/1AquunAVcx/" target="_blank" class="social-icon" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/parro.sanantoniodepadua?igsh=MXRneng4Nzg2MGgzNA==" target="_blank" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://share.google/6GaPNxTyI02Faqd63" target="_blank" class="social-icon" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="https://youtube.com/@sanantoniodepaduasaac?si=1y1MmxNRH4CD67kN" target="_blank" class="social-icon" title="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.tiktok.com/@sanantoniodepaduasaac?_r=1&_t=ZM-91NUqaGFZAB" target="_blank" class="social-icon" title="TikTok"><i class="fab fa-tiktok"></i></a>
+        <a href="#" class="social-icon" title="Email"><i class="fas fa-envelope"></i></a>
+      </div>
+
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Información</h3>
+          <a href="horarios.html">Horarios</a>
+          <a href="eventos.html">Eventos</a>
+          <a href="noticias.html">Noticias</a>
+          <a href="galeria.html">Galería</a>
+        </div>
+        <div class="footer-section">
+          <h3>Comunidad</h3>
+          <a href="consejo-pastoral.html">Consejo Pastoral</a>
+          <a href="donaciones.html">Donaciones</a>
+          <a href="contacto.html">Contacto</a>
+        </div>
+        <div class="footer-section">
+          <h3>Enlaces Útiles</h3>
+          <a href="https://www.conferenciaepiscopal.org.gt/" target="_blank">Conferencia Episcopal</a>
+          <a href="https://www.vatican.va/content/vatican/es.html" target="_blank">El Vaticano</a>
+          <a href="oraciones.html">Oraciones</a>
+          <a href="enlaces.html">Enlaces</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2024 San Antonio de Padua. Todos los derechos reservados.</p>
+        <p>Hecho con <span style="color: #d4a574;">❤</span> para nuestra comunidad</p>
+      </div>
+    </footer>
+  </main>
+
+  <script src="../js/main.js"></script>
+  <script>
+    // Manejo de botones de cantidad
+    document.querySelectorAll('.amount-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        // Remover clase active de todos los botones en el mismo grupo
+        this.parentElement.querySelectorAll('.amount-btn').forEach(b => {
+          b.classList.remove('active');
+        });
+        // Agregar clase active al botón clickeado
+        this.classList.add('active');
+      });
+    });
+
+    function processDonation() {
+      const selectedAmount = document.querySelector('.donation-amounts .amount-btn.active')?.dataset.amount;
+      const customAmount = document.getElementById('customAmount').value;
+      const amount = customAmount || selectedAmount;
+      
+      if (!amount || amount < 1) {
+        alert('Por favor selecciona o ingresa un monto válido');
+        return;
+      }
+      
+      alert(`¡Gracias por tu donación de Q${amount}! Serás redirigido al proceso de pago.`);
+      // Aquí iría la integración con el gateway de pago
+    }
+
+    function processMonthlyDonation() {
+      const selectedAmount = document.querySelectorAll('.donation-amounts')[1].querySelector('.amount-btn.active')?.dataset.amount;
+      const customAmount = document.getElementById('customMonthly').value;
+      const amount = customAmount || selectedAmount;
+      
+      if (!amount || amount < 1) {
+        alert('Por favor selecciona o ingresa un monto mensual válido');
+        return;
+      }
+      
+      alert(`¡Gracias por tu donación mensual de Q${amount}! Serás redirigido al proceso de suscripción.`);
+      // Aquí iría la integración con el gateway de pago para suscripciones
+    }
+  </script>
+</body>
+</html>

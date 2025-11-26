@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sacramentos - San Antonio de Padua</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../styles/main.css">
+  <style>
+    .sacramento-detail {
+      background: var(--white);
+      padding: 2rem;
+      border-radius: var(--border-radius);
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow);
+      border-left: 4px solid var(--accent-color);
+    }
+
+    .sacramento-icon {
+      font-size: 3rem;
+      color: var(--secondary-color);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .requirements-list {
+      background: rgba(201, 184, 154, 0.1);
+      padding: 1.5rem;
+      border-radius: var(--border-radius);
+      margin: 1rem 0;
+    }
+
+    .requirements-list ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .requirements-list li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(201, 184, 154, 0.3);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .requirements-list li:last-child {
+      border-bottom: none;
+    }
+
+    .requirements-list li::before {
+      content: '✓';
+      color: var(--secondary-color);
+      font-weight: bold;
+    }
+
+    .sacramento-schedule {
+      background: linear-gradient(135deg, #F5F1E8, #E8DCC8);
+      padding: 1.5rem;
+      border-radius: var(--border-radius);
+      margin: 1rem 0;
+    }
+
+    .schedule-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(107, 68, 35, 0.1);
+    }
+
+    .schedule-item:last-child {
+      border-bottom: none;
+    }
+  </style>
+</head>
+<body>
+
+  <main id="main" class="show">
+    <header>
+      <div class="header-content">
+        <a href="../index.html" class="logo">
+          <i class="fas fa-church"></i> Parroquia San Antonio de Padua
+        </a>
+        
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav class="nav-menu" id="navMenu">
+          <ul class="nav-list">
+            <li><a href="../index.html" class="nav-link"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="quienes-somos.html" class="nav-link"><i class="fas fa-users"></i> Quiénes Somos</a></li>
+            <li><a href="sacramentos.html" class="nav-link active"><i class="fas fa-cross"></i> Sacramentos</a></li>
+            <li><a href="horarios.html" class="nav-link"><i class="fas fa-clock"></i> Horarios</a></li>
+            <li><a href="consejo-pastoral.html" class="nav-link"><i class="fas fa-hands-praying"></i> Consejo Pastoral</a></li>
+            <li><a href="eventos.html" class="nav-link"><i class="fas fa-calendar-alt"></i> Eventos</a></li>
+            <li><a href="noticias.html" class="nav-link"><i class="fas fa-newspaper"></i> Noticias</a></li>
+            <li><a href="galeria.html" class="nav-link"><i class="fas fa-images"></i> Galería</a></li>
+            <li><a href="contacto.html" class="nav-link"><i class="fas fa-envelope"></i> Contacto</a></li>
+            <li><a href="donaciones.html" class="nav-link"><i class="fas fa-hand-holding-heart"></i> Donaciones</a></li>
+            <li><a href="oraciones.html" class="nav-link"><i class="fas fa-pray"></i> Oraciones</a></li>
+            <li><a href="enlaces.html" class="nav-link"><i class="fas fa-link"></i> Enlaces</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div class="content-wrapper">
+      <div class="page-header">
+        <h1>Sacramentos</h1>
+        <p>Los sacramentos son signos sensibles y eficaces de la gracia de Dios</p>
+      </div>
+
+      <!-- Bautizos -->
+      <div class="sacramento-detail">
+        <div class="sacramento-icon">
+          <i class="fas fa-water"></i>
+        </div>
+        <h2>Bautismo</h2>
+        <p>El Bautismo es el fundamento de toda la vida cristiana, el pórtico de la vida en el espíritu y la puerta que abre el acceso a los otros sacramentos.</p>
+        
+        <div class="requirements-list">
+          <h4>Requisitos:</h4>
+          <ul>
+            <li>Certificado de nacimiento del niño</li>
+            <li>Partida de matrimonio civil y eclesiástico de los padres</li>
+            <li>Padrinos que hayan recibido los sacramentos de iniciación</li>
+            <li>Asistencia a plática prebautismal</li>
+            <li>Solicitud en la oficina parroquial</li>
+          </ul>
+        </div>
+
+        <div class="sacramento-schedule">
+          <h4>Horarios de Bautizos:</h4>
+          <div class="schedule-item">
+            <span>Sábados</span>
+            <span>11:00 AM</span>
+          </div>
+          <div class="schedule-item">
+            <span>Domingos</span>
+            <span>1:00 PM</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Eucaristía -->
+      <div class="sacramento-detail">
+        <div class="sacramento-icon">
+          <i class="fas fa-wine-glass-alt"></i>
+        </div>
+        <h2>Primera Comunión</h2>
+        <p>La Eucaristía es el corazón y la cumbre de la vida de la Iglesia, pues en ella Cristo asocia su Iglesia y todos sus miembros a su sacrificio de alabanza y acción de gracias.</p>
+        
+        <div class="requirements-list">
+          <h4>Preparación:</h4>
+          <ul>
+            <li>Dos años de catequesis</li>
+            <li>Haber recibido el sacramento del Bautismo</li>
+            <li>Edad: 8-9 años (segundo grado primaria)</li>
+            <li>Participación en retiros espirituales</li>
+            <li>Compromiso de los padres en la formación</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Confirmación -->
+      <div class="sacramento-detail">
+        <div class="sacramento-icon">
+          <i class="fas fa-dove"></i>
+        </div>
+        <h2>Confirmación</h2>
+        <p>El sacramento de la Confirmación perfecciona la gracia bautismal y nos une más firmemente a Cristo, completando nuestra iniciación cristiana.</p>
+        
+        <div class="requirements-list">
+          <h4>Preparación:</h4>
+          <ul>
+            <li>Haber recibido Primera Comunión</li>
+            <li>Un año de preparación especial</li>
+            <li>Edad: 14-16 años</li>
+            <li>Participación en retiros y actividades</li>
+            <li>Elección de padrino/madrina confirmación</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Reconciliación -->
+      <div class="sacramento-detail">
+        <div class="sacramento-icon">
+          <i class="fas fa-hand-holding-heart"></i>
+        </div>
+        <h2>Confesión</h2>
+        <p>El sacramento de la Penitencia y Reconciliación nos ofrece el perdón de Dios por las ofensas que cometemos contra Él.</p>
+        
+        <div class="sacramento-schedule">
+          <h4>Horarios de Confesiones:</h4>
+          <div class="schedule-item">
+            <span>Lunes a Viernes</span>
+            <span>30 min antes de cada misa</span>
+          </div>
+          <div class="schedule-item">
+            <span>Sábados</span>
+            <span>3:00 PM - 4:30 PM</span>
+          </div>
+          <div class="schedule-item">
+            <span>Domingos</span>
+            <span>30 min antes de cada misa</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Matrimonio -->
+      <div class="sacramento-detail">
+        <div class="sacramento-icon">
+          <i class="fas fa-ring"></i>
+        </div>
+        <h2>Matrimonio</h2>
+        <p>El sacramento del Matrimonio significa la unión de Cristo con la Iglesia. Establece entre los cónyuges un vínculo perpetuo y exclusivo.</p>
+        
+        <div class="requirements-list">
+          <h4>Requisitos:</h4>
+          <ul>
+            <li>Acta de nacimiento actualizada</li>
+            <li>Certificado de bautismo (no mayor a 6 meses)</li>
+            <li>Certificado de confirmación</li>
+            <li>Acta de matrimonio civil</li>
+            <li>6 meses de preparación prematrimonial</li>
+            <li>Testigos solteros o casados por la Iglesia</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Unción de los Enfermos -->
+      <div class="sacramento-detail">
+        <div class="sacramento-icon">
+          <i class="fas fa-hand-holding-medical"></i>
+        </div>
+        <h2>Unción de los Enfermos</h2>
+        <p>Este sacramento da la gracia del Espíritu Santo a los que están enfermos, para que se liberen de sus pecados y se alivien en su enfermedad.</p>
+        
+        <div class="requirements-list">
+          <h4>Información:</h4>
+          <ul>
+            <li>Para enfermos graves o de edad avanzada</li>
+            <li>Se puede recibir varias veces</li>
+            <li>Comuníquese con la oficina parroquial</li>
+            <li>Disponible para visitas a domicilio</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="content-section">
+        <h2>Información General</h2>
+        <p>Para más información sobre cualquiera de los sacramentos, por favor comuníquese con la oficina parroquial durante los horarios de atención.</p>
+        <p><strong>Teléfono:</strong> [Número de teléfono]</p>
+        <p><strong>Horario de oficina:</strong> Lunes a Viernes 9:00 AM - 12:00 PM / 3:00 PM - 6:00 PM</p>
+      </div>
+    </div>
+
+    <footer>
+      <div class="social-links">
+        <a href="https://www.facebook.com/share/1AquunAVcx/" target="_blank" class="social-icon" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/parro.sanantoniodepadua?igsh=MXRneng4Nzg2MGgzNA==" target="_blank" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://share.google/6GaPNxTyI02Faqd63" target="_blank" class="social-icon" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="https://youtube.com/@sanantoniodepaduasaac?si=1y1MmxNRH4CD67kN" target="_blank" class="social-icon" title="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.tiktok.com/@sanantoniodepaduasaac?_r=1&_t=ZM-91NUqaGFZAB" target="_blank" class="social-icon" title="TikTok"><i class="fab fa-tiktok"></i></a>
+        <a href="#" class="social-icon" title="Email"><i class="fas fa-envelope"></i></a>
+      </div>
+
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Información</h3>
+          <a href="horarios.html">Horarios</a>
+          <a href="eventos.html">Eventos</a>
+          <a href="noticias.html">Noticias</a>
+          <a href="galeria.html">Galería</a>
+        </div>
+        <div class="footer-section">
+          <h3>Comunidad</h3>
+          <a href="consejo-pastoral.html">Consejo Pastoral</a>
+          <a href="donaciones.html">Donaciones</a>
+          <a href="contacto.html">Contacto</a>
+        </div>
+        <div class="footer-section">
+          <h3>Enlaces Útiles</h3>
+          <a href="https://www.conferenciaepiscopal.org.gt/" target="_blank">Conferencia Episcopal</a>
+          <a href="https://www.vatican.va/content/vatican/es.html" target="_blank">El Vaticano</a>
+          <a href="oraciones.html">Oraciones</a>
+          <a href="enlaces.html">Enlaces</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2024 San Antonio de Padua. Todos los derechos reservados.</p>
+        <p>Hecho con <span style="color: #d4a574;">❤</span> para nuestra comunidad</p>
+      </div>
+    </footer>
+  </main>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

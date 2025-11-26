@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Noticias - San Antonio de Padua</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../styles/main.css">
+  <style>
+    /* Estilos específicos para noticias */
+    .facebook-feed-container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      background: var(--white);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      border: 2px solid var(--accent-color);
+      overflow: hidden;
+    }
+
+    .facebook-header {
+      text-align: center;
+      padding: 2rem;
+      background: linear-gradient(135deg, #F5F1E8 0%, #E8DCC8 100%);
+      border-bottom: 2px solid var(--accent-color);
+    }
+
+    .facebook-header h2 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .facebook-feed-wrapper {
+      padding: 2rem;
+      min-height: 600px;
+      display: flex;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+
+  <main id="main" class="show">
+    <header>
+      <div class="header-content">
+        <a href="../index.html" class="logo">
+          <i class="fas fa-church"></i> Parroquia San Antonio de Padua
+        </a>
+        
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav class="nav-menu" id="navMenu">
+          <ul class="nav-list">
+            <li><a href="../index.html" class="nav-link"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="quienes-somos.html" class="nav-link"><i class="fas fa-users"></i> Quiénes Somos</a></li>
+            <li><a href="sacramentos.html" class="nav-link"><i class="fas fa-cross"></i> Sacramentos</a></li>
+            <li><a href="horarios.html" class="nav-link"><i class="fas fa-clock"></i> Horarios</a></li>
+            <li><a href="consejo-pastoral.html" class="nav-link"><i class="fas fa-hands-praying"></i> Consejo Pastoral</a></li>
+            <li><a href="eventos.html" class="nav-link"><i class="fas fa-calendar-alt"></i> Eventos</a></li>
+            <li><a href="noticias.html" class="nav-link active"><i class="fas fa-newspaper"></i> Noticias</a></li>
+            <li><a href="galeria.html" class="nav-link"><i class="fas fa-images"></i> Galería</a></li>
+            <li><a href="contacto.html" class="nav-link"><i class="fas fa-envelope"></i> Contacto</a></li>
+            <li><a href="donaciones.html" class="nav-link"><i class="fas fa-hand-holding-heart"></i> Donaciones</a></li>
+            <li><a href="oraciones.html" class="nav-link"><i class="fas fa-pray"></i> Oraciones</a></li>
+            <li><a href="enlaces.html" class="nav-link"><i class="fas fa-link"></i> Enlaces</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div class="content-wrapper">
+      <div class="page-header">
+        <h1>Noticias</h1>
+        <p>Mantente informado sobre las últimas actividades y eventos de nuestra parroquia</p>
+      </div>
+
+      <div class="facebook-feed-container">
+        <div class="facebook-header">
+          <h2>Últimas Noticias</h2>
+          <p>Sigue nuestras actividades en tiempo real desde Facebook</p>
+        </div>
+        <div class="facebook-feed-wrapper">
+          <div class="fb-page" 
+               data-href="https://www.facebook.com/Oficialsanantoniodepadua" 
+               data-tabs="timeline" 
+               data-width="500" 
+               data-height="700" 
+               data-small-header="false" 
+               data-adapt-container-width="true" 
+               data-hide-cover="false" 
+               data-show-facepile="true">
+            <blockquote cite="https://www.facebook.com/Oficialsanantoniodepadua" class="fb-xfbml-parse-ignore">
+              <a href="https://www.facebook.com/Oficialsanantoniodepadua">San Antonio de Padua Oficial</a>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <!-- Mismo footer que el index -->
+    </footer>
+  </main>
+
+  <!-- Facebook SDK -->
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous" 
+          src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v19.0">
+  </script>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

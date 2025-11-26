@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contacto - San Antonio de Padua</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../styles/main.css">
+  <style>
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .contact-card {
+      background: var(--white);
+      padding: 2rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .contact-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .contact-icon {
+      font-size: 2.5rem;
+      color: var(--secondary-color);
+      margin-bottom: 1rem;
+    }
+
+    .contact-info {
+      margin: 1rem 0;
+    }
+
+    .contact-info p {
+      margin: 0.5rem 0;
+      color: var(--primary-color);
+    }
+
+    .map-container {
+      margin: 2rem 0;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .map-placeholder {
+      background: linear-gradient(135deg, #F5F1E8, #E8DCC8);
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--secondary-color);
+      font-size: 1.2rem;
+    }
+
+    .emergency-contact {
+      background: rgba(212, 165, 116, 0.2);
+      border-left: 4px solid var(--secondary-color);
+      padding: 1.5rem;
+      border-radius: var(--border-radius);
+      margin: 2rem 0;
+    }
+
+    .form-success {
+      background: rgba(76, 175, 80, 0.1);
+      border: 1px solid #4CAF50;
+      padding: 1rem;
+      border-radius: var(--border-radius);
+      margin: 1rem 0;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <main id="main" class="show">
+    <header>
+      <div class="header-content">
+        <a href="../index.html" class="logo">
+          <i class="fas fa-church"></i> Parroquia San Antonio de Padua
+        </a>
+        
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav class="nav-menu" id="navMenu">
+          <ul class="nav-list">
+            <li><a href="../index.html" class="nav-link"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="quienes-somos.html" class="nav-link"><i class="fas fa-users"></i> Quiénes Somos</a></li>
+            <li><a href="sacramentos.html" class="nav-link"><i class="fas fa-cross"></i> Sacramentos</a></li>
+            <li><a href="horarios.html" class="nav-link"><i class="fas fa-clock"></i> Horarios</a></li>
+            <li><a href="consejo-pastoral.html" class="nav-link"><i class="fas fa-hands-praying"></i> Consejo Pastoral</a></li>
+            <li><a href="eventos.html" class="nav-link"><i class="fas fa-calendar-alt"></i> Eventos</a></li>
+            <li><a href="noticias.html" class="nav-link"><i class="fas fa-newspaper"></i> Noticias</a></li>
+            <li><a href="galeria.html" class="nav-link"><i class="fas fa-images"></i> Galería</a></li>
+            <li><a href="contacto.html" class="nav-link active"><i class="fas fa-envelope"></i> Contacto</a></li>
+            <li><a href="donaciones.html" class="nav-link"><i class="fas fa-hand-holding-heart"></i> Donaciones</a></li>
+            <li><a href="oraciones.html" class="nav-link"><i class="fas fa-pray"></i> Oraciones</a></li>
+            <li><a href="enlaces.html" class="nav-link"><i class="fas fa-link"></i> Enlaces</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div class="content-wrapper">
+      <div class="page-header">
+        <h1>Contacto</h1>
+        <p>Estamos aquí para servirte. No dudes en comunicarte con nosotros</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <h3>Dirección</h3>
+          <div class="contact-info">
+            <p><strong>Parroquia San Antonio de Padua</strong></p>
+            <p>6a Avenida 7-89, Zona 1</p>
+            <p>Antigua Guatemala, Sacatepéquez</p>
+            <p>Guatemala, Centroamérica</p>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-icon">
+            <i class="fas fa-phone"></i>
+          </div>
+          <h3>Teléfonos</h3>
+          <div class="contact-info">
+            <p><strong>Oficina Parroquial:</strong></p>
+            <p>+502 7832-4567</p>
+            <p><strong>Despacho Parroquial:</strong></p>
+            <p>+502 7832-4568</p>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <h3>Correo Electrónico</h3>
+          <div class="contact-info">
+            <p><strong>Información General:</strong></p>
+            <p>info@sanantoniodepadua.org</p>
+            <p><strong>Sacramentos:</strong></p>
+            <p>sacramentos@sanantoniodepadua.org</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="emergency-contact">
+        <h3><i class="fas fa-exclamation-triangle"></i> Contacto de Emergencia</h3>
+        <p>Para emergencias pastorales (Unción de Enfermos, acompañamiento espiritual urgente):</p>
+        <p><strong>Teléfono de Emergencia:</strong> +502 5555-7890 (Disponible 24/7)</p>
+      </div>
+
+      <div class="content-section">
+        <h2>Envíanos un Mensaje</h2>
+        <form id="contactForm" class="contact-form">
+          <div id="formSuccess" class="form-success">
+            <i class="fas fa-check-circle"></i> ¡Mensaje enviado correctamente! Te contactaremos pronto.
+          </div>
+
+          <div class="grid-2">
+            <div class="form-group">
+              <label for="nombre"><i class="fas fa-user"></i> Nombre Completo *</label>
+              <input type="text" id="nombre" name="nombre" required>
+            </div>
+            <div class="form-group">
+              <label for="email"><i class="fas fa-envelope"></i> Correo Electrónico *</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="form-group">
+              <label for="telefono"><i class="fas fa-phone"></i> Teléfono</label>
+              <input type="tel" id="telefono" name="telefono">
+            </div>
+            <div class="form-group">
+              <label for="asunto"><i class="fas fa-tag"></i> Asunto *</label>
+              <select id="asunto" name="asunto" required>
+                <option value="">Selecciona un asunto</option>
+                <option value="informacion">Información General</option>
+                <option value="sacramentos">Sacramentos</option>
+                <option value="oraciones">Pedido de Oraciones</option>
+                <option value="donaciones">Donaciones</option>
+                <option value="voluntariado">Voluntariado</option>
+                <option value="otro">Otro</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="mensaje"><i class="fas fa-comment"></i> Mensaje *</label>
+            <textarea id="mensaje" name="mensaje" rows="6" placeholder="Escribe tu mensaje aquí..." required></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">
+            <i class="fas fa-paper-plane"></i> Enviar Mensaje
+          </button>
+        </form>
+      </div>
+
+      <div class="content-section">
+        <h2>Ubicación</h2>
+        <div class="map-container">
+          <div class="map-placeholder">
+            <div style="text-align: center;">
+              <i class="fas fa-map" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+              <p><strong>Mapa de Ubicación</strong></p>
+              <p>6a Avenida 7-89, Zona 1</p>
+              <p>Antigua Guatemala, Sacatepéquez</p>
+              <a href="https://maps.google.com" target="_blank" style="color: var(--secondary-color); text-decoration: underline;">
+                Ver en Google Maps
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section">
+        <h2>Horarios de Atención</h2>
+        <div class="grid-2">
+          <div class="card">
+            <h3><i class="fas fa-door-open"></i> Oficina Parroquial</h3>
+            <p><strong>Lunes a Viernes:</strong><br>9:00 AM - 12:00 PM<br>3:00 PM - 6:00 PM</p>
+            <p><strong>Sábados:</strong><br>9:00 AM - 12:00 PM</p>
+            <p><strong>Domingos:</strong><br>Cerrado</p>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-users"></i> Atención Personal</h3>
+            <p>Para atención personal con el párroco o diácono, favor agendar cita previa a través de la oficina parroquial.</p>
+            <p>También estamos disponibles después de las misas para consultas breves.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="social-links">
+        <a href="https://www.facebook.com/share/1AquunAVcx/" target="_blank" class="social-icon" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/parro.sanantoniodepadua?igsh=MXRneng4Nzg2MGgzNA==" target="_blank" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://share.google/6GaPNxTyI02Faqd63" target="_blank" class="social-icon" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="https://youtube.com/@sanantoniodepaduasaac?si=1y1MmxNRH4CD67kN" target="_blank" class="social-icon" title="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.tiktok.com/@sanantoniodepaduasaac?_r=1&_t=ZM-91NUqaGFZAB" target="_blank" class="social-icon" title="TikTok"><i class="fab fa-tiktok"></i></a>
+        <a href="#" class="social-icon" title="Email"><i class="fas fa-envelope"></i></a>
+      </div>
+
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Información</h3>
+          <a href="horarios.html">Horarios</a>
+          <a href="eventos.html">Eventos</a>
+          <a href="noticias.html">Noticias</a>
+          <a href="galeria.html">Galería</a>
+        </div>
+        <div class="footer-section">
+          <h3>Comunidad</h3>
+          <a href="consejo-pastoral.html">Consejo Pastoral</a>
+          <a href="donaciones.html">Donaciones</a>
+          <a href="contacto.html">Contacto</a>
+        </div>
+        <div class="footer-section">
+          <h3>Enlaces Útiles</h3>
+          <a href="https://www.conferenciaepiscopal.org.gt/" target="_blank">Conferencia Episcopal</a>
+          <a href="https://www.vatican.va/content/vatican/es.html" target="_blank">El Vaticano</a>
+          <a href="oraciones.html">Oraciones</a>
+          <a href="enlaces.html">Enlaces</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2024 San Antonio de Padua. Todos los derechos reservados.</p>
+        <p>Hecho con <span style="color: #d4a574;">❤</span> para nuestra comunidad</p>
+      </div>
+    </footer>
+  </main>
+
+  <script src="../js/main.js"></script>
+  <script>
+    // Manejo del formulario de contacto
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Simular envío del formulario
+      const successMessage = document.getElementById('formSuccess');
+      successMessage.style.display = 'block';
+      
+      // Limpiar formulario
+      this.reset();
+      
+      // Ocultar mensaje después de 5 segundos
+      setTimeout(() => {
+        successMessage.style.display = 'none';
+      }, 5000);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Enlaces - San Antonio de Padua</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../styles/main.css">
+  <style>
+    .links-categories {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .link-category {
+      background: var(--white);
+      padding: 2rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+    }
+
+    .category-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid var(--accent-color);
+    }
+
+    .category-icon {
+      font-size: 2rem;
+      color: var(--secondary-color);
+    }
+
+    .link-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .link-item {
+      margin: 1rem 0;
+      padding: 1rem;
+      background: rgba(201, 184, 154, 0.1);
+      border-radius: var(--border-radius);
+      transition: var(--transition);
+    }
+
+    .link-item:hover {
+      background: rgba(201, 184, 154, 0.2);
+      transform: translateX(5px);
+    }
+
+    .link-item a {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      color: var(--primary-color);
+      font-weight: 500;
+    }
+
+    .link-item i {
+      color: var(--secondary-color);
+      width: 20px;
+      text-align: center;
+    }
+
+    .link-description {
+      font-size: 0.9rem;
+      color: var(--secondary-color);
+      margin-top: 0.5rem;
+      margin-left: 2rem;
+    }
+
+    .resource-highlight {
+      background: linear-gradient(135deg, #F5F1E8, #E8DCC8);
+      padding: 2rem;
+      border-radius: var(--border-radius);
+      margin: 2rem 0;
+      text-align: center;
+    }
+
+    .app-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .app-link {
+      background: var(--white);
+      padding: 1.5rem;
+      border-radius: var(--border-radius);
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .app-link:hover {
+      transform: translateY(-5px);
+    }
+
+    .app-icon {
+      font-size: 2rem;
+      color: var(--secondary-color);
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <main id="main" class="show">
+    <header>
+      <div class="header-content">
+        <a href="../index.html" class="logo">
+          <i class="fas fa-church"></i> Parroquia San Antonio de Padua
+        </a>
+        
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav class="nav-menu" id="navMenu">
+          <ul class="nav-list">
+            <li><a href="../index.html" class="nav-link"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="quienes-somos.html" class="nav-link"><i class="fas fa-users"></i> Quiénes Somos</a></li>
+            <li><a href="sacramentos.html" class="nav-link"><i class="fas fa-cross"></i> Sacramentos</a></li>
+            <li><a href="horarios.html" class="nav-link"><i class="fas fa-clock"></i> Horarios</a></li>
+            <li><a href="consejo-pastoral.html" class="nav-link"><i class="fas fa-hands-praying"></i> Consejo Pastoral</a></li>
+            <li><a href="eventos.html" class="nav-link"><i class="fas fa-calendar-alt"></i> Eventos</a></li>
+            <li><a href="noticias.html" class="nav-link"><i class="fas fa-newspaper"></i> Noticias</a></li>
+            <li><a href="galeria.html" class="nav-link"><i class="fas fa-images"></i> Galería</a></li>
+            <li><a href="contacto.html" class="nav-link"><i class="fas fa-envelope"></i> Contacto</a></li>
+            <li><a href="donaciones.html" class="nav-link"><i class="fas fa-hand-holding-heart"></i> Donaciones</a></li>
+            <li><a href="oraciones.html" class="nav-link"><i class="fas fa-pray"></i> Oraciones</a></li>
+            <li><a href="enlaces.html" class="nav-link active"><i class="fas fa-link"></i> Enlaces</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div class="content-wrapper">
+      <div class="page-header">
+        <h1>Enlaces Útiles</h1>
+        <p>Recursos y enlaces católicos para tu crecimiento espiritual</p>
+      </div>
+
+      <div class="resource-highlight">
+        <h2><i class="fas fa-star"></i> Recursos Destacados</h2>
+        <p>Enlaces esenciales para profundizar en tu fe y conectar con la Iglesia universal</p>
+      </div>
+
+      <div class="links-categories">
+        <!-- Iglesia Universal -->
+        <div class="link-category">
+          <div class="category-header">
+            <div class="category-icon">
+              <i class="fas fa-dove"></i>
+            </div>
+            <h2>Iglesia Universal</h2>
+          </div>
+          <ul class="link-list">
+            <li class="link-item">
+              <a href="https://www.vatican.va/content/vatican/es.html" target="_blank">
+                <i class="fas fa-vatican"></i>
+                <span>Santa Sede - El Vaticano</span>
+              </a>
+              <div class="link-description">Sitio oficial de la Santa Sede con documentos, noticias y recursos del Papa</div>
+            </li>
+            <li class="link-item">
+              <a href="https://www.vaticannews.va/es.html" target="_blank">
+                <i class="fas fa-newspaper"></i>
+                <span>Vatican News</span>
+              </a>
+              <div class="link-description">Medio de comunicación oficial de la Santa Sede</div>
+            </li>
+            <li class="link-item">
+              <a href="https://www.clerus.org/" target="_blank">
+                <i class="fas fa-users"></i>
+                <span>Congregación para el Clero</span>
+              </a>
+              <div class="link-description">Recursos para la formación y vida sacerdotal</div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Iglesia en Guatemala -->
+        <div class="link-category">
+          <div class="category-header">
+            <div class="category-icon">
+              <i class="fas fa-church"></i>
+            </div>
+            <h2>Iglesia en Guatemala</h2>
+          </div>
+          <ul class="link-list">
+            <li class="link-item">
+              <a href="https://www.iglesiacatolica.org.gt/" target="_blank">
+                <i class="fas fa-landmark"></i>
+                <span>Conferencia Episcopal de Guatemala</span>
+              </a>
+              <div class="link-description">Sitio oficial de los obispos de Guatemala</div>
+            </li>
+            <li class="link-item">
+              <a href="https://www.arquidiocesisdeguatemala.org/" target="_blank">
+                <i class="fas fa-archway"></i>
+                <span>Arquidiócesis de Guatemala</span>
+              </a>
+              <div class="link-description">Información de la arquidiócesis primada</div>
+            </li>
+            <li class="link-item">
+              <a href="https://www.facebook.com/p/Vicar%C3%ADa-Episcopal-de-Sacatep%C3%A9quez-100069181298861/?locale=es_LA" target="_blank">
+                <i class="fab fa-facebook"></i>
+                <span>Vicaria Episcopal de Sacatepéquez</span>
+              </a>
+              <div class="link-description">Nuestra vicaria episcopal en Facebook</div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Recursos Bíblicos -->
+        <div class="link-category">
+          <div class="category-header">
+            <div class="category-icon">
+              <i class="fas fa-bible"></i>
+            </div>
+            <h2>Recursos Bíblicos</h2>
+          </div>
+          <ul class="link-list">
+            <li class="link-item">
+              <a href="https://www.vatican.va/archive/ESL0506/_INDEX.HTM" target="_blank">
+                <i class="fas fa-book"></i>
+                <span>Biblia de la Vatican.va</span>
+              </a>
+              <div class="link-description">Biblia completa en el sitio del Vaticano</div>
+            </li>
+            <li class="link-item">
+              <a href="https://www.ewtn.com/es/biblia" target="_blank">
+                <i class="fas fa-cross"></i>
+                <span>EWTN - Biblia</span>
+              </a>
+              <div class="link-description">Recursos bíblicos de EWTN</div>
+            </li>
+            <li class="link-item">
+              <a href="https://www.aciprensa.com/biblia/" target="_blank">
+                <i class="fas fa-pray"></i>
+                <span>ACI Prensa - Biblia</span>
+              </a>
+              <div class="link-description">Biblia en línea con comentarios</div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Medios Católicos -->
+        <div class="link-category">
+          <div class="category-header">
+            <div class="category-icon">
+              <i class="fas fa-tv"></i>
+            </div>
+            <h2>Medios Católicos</h2>
+          </div>
+          <ul class="link-list">
+            <li class="link-item">
+              <a href="https://www.ewtn.com/es" target="_blank">
+                <i class="fas fa-satellite-dish"></i>
+                <span>EWTN Español</span>
+              </a>
+              <div class="link-description">Televisión católica mundial</div>
+            </li>
+            <li class="link-item">
+              <a href="https://www.aciprensa.com/" target="_blank">
+                <i class="fas fa-newspaper"></i>
+                <span>ACI Prensa</span>
+              </a>
+              <div class="link-description">Agencia de noticias católicas</div>
+            </li>
+            <li class="link-item">
+              <a href="https://www.religionenlibertad.com/" target="_blank">
+                <i class="fas fa-feather-alt"></i>
+                <span>Religión en Libertad</span>
+              </a>
+              <div class="link-description">Medio de comunicación católico</div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Formación y Educación -->
+        <div class="link-category">
+          <div class="category-header">
+            <div class="category-icon">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <h2>Formación</h2>
+          </div>
+          <ul class="link-list">
+            <li class="link-item">
+              <a href="https://www.corazones.org/" target="_blank">
+                <i class="fas fa-heart"></i>
+                <span>Corazones.org</span>
+              </a>
+              <div class="link-description">Enciclopedia católica en línea</div>
+            </li>
+            <li class="link-item">
+              <a href="https://www.enciclopediacatolica.com/" target="_blank">
+                <i class="fas fa-book-open"></i>
+                <span>Enciclopedia Católica</span>
+              </a>
+              <div class="link-description">Recursos de doctrina católica</div>
+            </li>
+            <li class="link-item">
+              <a href="https://www.mercaba.org/" target="_blank">
+                <i class="fas fa-praying-hands"></i>
+                <span>Mercaba</span>
+              </a>
+              <div class="link-description">Recursos teológicos y espirituales</div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Santuarios y Lugares -->
+        <div class="link-category">
+          <div class="category-header">
+            <div class="category-icon">
+              <i class="fas fa-place-of-worship"></i>
+            </div>
+            <h2>Santuarios</h2>
+          </div>
+          <ul class="link-list">
+            <li class="link-item">
+              <a href="https://www.sanctuaire-lourdes.fr/" target="_blank">
+                <i class="fas fa-mountain"></i>
+                <span>Lourdes</span>
+              </a>
+              <div class="link-description">Santuario de Nuestra Señora de Lourdes</div>
+            </li>
+            <li class="link-item">
+              <a href="https://www.fatima.pt/es" target="_blank">
+                <i class="fas fa-sun"></i>
+                <span>Fátima</span>
+              </a>
+              <div class="link-description">Santuario de Nuestra Señora de Fátima</div>
+            </li>
+            <li class="link-item">
+              <a href="https://www.santuarioguadalupe.org.mx/" target="_blank">
+                <i class="fas fa-star"></i>
+                <span>Guadalupe</span>
+              </a>
+              <div class="link-description">Basílica de Guadalupe, México</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="content-section">
+        <h2>Aplicaciones Móviles Recomendadas</h2>
+        <div class="app-links">
+          <div class="app-link">
+            <div class="app-icon">
+              <i class="fas fa-bible"></i>
+            </div>
+            <h3>La Biblia App</h3>
+            <p>Biblia completa en español con planes de lectura</p>
+            <a href="#" style="color: var(--secondary-color);">Descargar</a>
+          </div>
+          <div class="app-link">
+            <div class="app-icon">
+              <i class="fas fa-rosary"></i>
+            </div>
+            <h3>Rosario App</h3>
+            <p>Guía para rezar el rosario con misterios</p>
+            <a href="#" style="color: var(--secondary-color);">Descargar</a>
+          </div>
+          <div class="app-link">
+            <div class="app-icon">
+              <i class="fas fa-pray"></i>
+            </div>
+            <h3>iBreviary</h3>
+            <p>Liturgia de las Horas completo</p>
+            <a href="#" style="color: var(--secondary-color);">Descargar</a>
+          </div>
+          <div class="app-link">
+            <div class="app-icon">
+              <i class="fas fa-church"></i>
+            </div>
+            <h3>EWTN</h3>
+            <p>Contenido católico y transmisiones en vivo</p>
+            <a href="#" style="color: var(--secondary-color);">Descargar</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section">
+        <h2>Recursos para Descargar</h2>
+        <div class="grid-2">
+          <div class="card">
+            <h3><i class="fas fa-file-pdf"></i> Documentos</h3>
+            <ul>
+              <li><a href="#" style="color: var(--secondary-color);">Catecismo de la Iglesia Católica</a></li>
+              <li><a href="#" style="color: var(--secondary-color);">Compendio del Catecismo</a></li>
+              <li><a href="#" style="color: var(--secondary-color);">Documentos del Concilio Vaticano II</a></li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-audio-description"></i> Audio y Video</h3>
+            <ul>
+              <li><a href="#" style="color: var(--secondary-color);">Conferencias y retiros</a></li>
+              <li><a href="#" style="color: var(--secondary-color);">Música católica</a></li>
+              <li><a href="#" style="color: var(--secondary-color);">Catequesis en audio</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="social-links">
+        <a href="https://www.facebook.com/share/1AquunAVcx/" target="_blank" class="social-icon" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/parro.sanantoniodepadua?igsh=MXRneng4Nzg2MGgzNA==" target="_blank" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://share.google/6GaPNxTyI02Faqd63" target="_blank" class="social-icon" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="https://youtube.com/@sanantoniodepaduasaac?si=1y1MmxNRH4CD67kN" target="_blank" class="social-icon" title="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.tiktok.com/@sanantoniodepaduasaac?_r=1&_t=ZM-91NUqaGFZAB" target="_blank" class="social-icon" title="TikTok"><i class="fab fa-tiktok"></i></a>
+        <a href="#" class="social-icon" title="Email"><i class="fas fa-envelope"></i></a>
+      </div>
+
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Información</h3>
+          <a href="horarios.html">Horarios</a>
+          <a href="eventos.html">Eventos</a>
+          <a href="noticias.html">Noticias</a>
+          <a href="galeria.html">Galería</a>
+        </div>
+        <div class="footer-section">
+          <h3>Comunidad</h3>
+          <a href="consejo-pastoral.html">Consejo Pastoral</a>
+          <a href="donaciones.html">Donaciones</a>
+          <a href="contacto.html">Contacto</a>
+        </div>
+        <div class="footer-section">
+          <h3>Enlaces Útiles</h3>
+          <a href="https://www.conferenciaepiscopal.org.gt/" target="_blank">Conferencia Episcopal</a>
+          <a href="https://www.vatican.va/content/vatican/es.html" target="_blank">El Vaticano</a>
+          <a href="oraciones.html">Oraciones</a>
+          <a href="enlaces.html">Enlaces</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2024 San Antonio de Padua. Todos los derechos reservados.</p>
+        <p>Hecho con <span style="color: #d4a574;">❤</span> para nuestra comunidad</p>
+      </div>
+    </footer>
+  </main>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
