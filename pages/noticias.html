@@ -7,68 +7,36 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="../styles/main.css">
   <style>
-    /* Estilos específicos para noticias - MEJORADOS */
+    /* Estilos específicos para noticias */
     .facebook-feed-container {
       max-width: 1000px;
+      min-width: 600px;
       margin: 2rem auto;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      border: 3px solid #8B6F47; /* Dorado típico de iglesia */
+      background: var(--white);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      border: 2px solid var(--accent-color);
       overflow: hidden;
     }
 
     .facebook-header {
       text-align: center;
-      padding: 2rem 1rem;
+      padding: 2rem;
       background: linear-gradient(135deg, #F5F1E8 0%, #E8DCC8 100%);
-      border-bottom: 3px solid #8B6F47;
+      border-bottom: 2px solid var(--accent-color);
     }
 
     .facebook-header h2 {
-      color: #5D4037;
-      margin-bottom: 0.5rem;
-      font-size: 2rem;
-    }
-
-    .facebook-header p {
-      color: #6D4C41;
-      font-size: 1.1rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
     }
 
     .facebook-feed-wrapper {
-      padding: 1rem;
-      background: #f8f9fa;
-      min-height: 700px;
-    }
-
-    /* ★★★ CLAVE: Forzar ancho 100% en el plugin de Facebook ★★★ */
-    .fb-page {
-      width: 100% !important;
-    }
-
-    .fb-page > span {
-      width: 100% !important;
-      max-width: none !important;
-    }
-
-    .fb-page iframe {
-      width: 100% !important;
-      max-width: none !important;
-    }
-
-    /* Responsivo extra para móviles */
-    @media (max-width: 768px) {
-      .facebook-feed-container {
-        margin: 1rem;
-        border-radius: 8px;
-      }
-      .facebook-header {
-        padding: 1.5rem 1rem;
-      }
-      .facebook-header h2 {
-        font-size: 1.6rem;
-      }
+      padding: 2rem;
+      min-width: 600px;
+      min-height: 600px;
+      display: flex;
+      justify-content: center;
     }
   </style>
 </head>
@@ -112,30 +80,21 @@
         <p>Mantente informado sobre las últimas actividades y eventos de nuestra parroquia</p>
       </div>
 
-      <!-- CONTENEDOR MEJORADO DEL FEED DE FACEBOOK -->
       <div class="facebook-feed-container">
         <div class="facebook-header">
           <h2>Últimas Noticias</h2>
           <p>Sigue nuestras actividades en tiempo real desde Facebook</p>
         </div>
-        
         <div class="facebook-feed-wrapper">
-          <!-- SDK de Facebook (se carga una sola vez) -->
-          <div id="fb-root"></div>
-          <script async defer crossorigin="anonymous" 
-                  src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v20.0"></script>
-
-          <!-- PLUGIN OFICIAL ACTUALIZADO: Ancho y altura automáticos -->
           <div class="fb-page" 
-               data-href="https://www.facebook.com/Oficialsanantoniodepadua"
-               data-tabs="timeline"
-               data-width=""           <!-- Vacío = 100% del contenedor -->
-               data-height=""          <!-- Vacío = altura automática -->
-               data-small-header="false"
-               data-adapt-container-width="true"
-               data-hide-cover="false"
-               data-show-facepile="true"
-               data-lazy="true">
+               data-href="https://www.facebook.com/Oficialsanantoniodepadua" 
+               data-tabs="timeline" 
+               data-width="500" 
+               data-height="700" 
+               data-small-header="false" 
+               data-adapt-container-width="true" 
+               data-hide-cover="false" 
+               data-show-facepile="true">
             <blockquote cite="https://www.facebook.com/Oficialsanantoniodepadua" class="fb-xfbml-parse-ignore">
               <a href="https://www.facebook.com/Oficialsanantoniodepadua">San Antonio de Padua Oficial</a>
             </blockquote>
@@ -146,12 +105,14 @@
 
     <footer>
       <!-- Mismo footer que el index -->
-      <div class="footer-content">
-        <p>&copy; 2025 Parroquia San Antonio de Padua. Todos los derechos reservados.</p>
-        <p>Dirección: [Tu dirección] | Teléfono: [Tu teléfono] | Email: [Tu email]</p>
-      </div>
     </footer>
   </main>
+
+  <!-- Facebook SDK -->
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous" 
+          src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v19.0">
+  </script>
 
   <script src="../js/main.js"></script>
 </body>
